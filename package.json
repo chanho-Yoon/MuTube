@@ -2,13 +2,12 @@
   "name": "mutube",
   "version": "1.0.0",
   "description": "알려지지 않은 비유명인들을 대상으로 하는 음악 공유 웹만들기",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "chanho Yoon",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }
