@@ -17,9 +17,10 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extends: true }))
+
 //라우터
 app.use(routes.home, globalRouter)
 app.use(routes.users, userRouter)
-app.use(routes.vidoes, videoRouter)
+app.use(routes.videos, videoRouter)
 
 export default app
