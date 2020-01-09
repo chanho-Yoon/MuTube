@@ -32,7 +32,7 @@ const routes = {
   userDetail: USER_DETAIL,
   editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
-  vidoes: VIDEOS,
+  videos: VIDEOS,
   upload: UPLOAD,
   videoDetail: VIDEOS_DETAIL,
   editVideo: EDIT_VIDEO,
