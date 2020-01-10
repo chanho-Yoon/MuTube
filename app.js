@@ -10,6 +10,8 @@ import videoRouter from './routers/videoRouter'
 import routes from './routes'
 const app = express()
 
+//Pug view engine
+app.set('view engine', 'pug')
 //미들웨어
 app.use(helmet())
 app.use(morgan('dev'))
