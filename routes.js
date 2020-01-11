@@ -21,7 +21,7 @@ const VIDEOS_DETAIL = '/:id'
 const EDIT_VIDEO = '/:id/edit'
 const DELETE_VIDEO = '/:id/delete'
 
-//오브젝트 생성
+//경로를 저장할 오브젝트 생성
 const routes = {
   home: HOME,
   join: JOIN,
