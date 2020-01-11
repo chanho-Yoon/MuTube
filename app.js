@@ -8,6 +8,7 @@ import globalRouter from './routers/globalRouter'
 import userRouter from './routers/userRouter'
 import videoRouter from './routers/videoRouter'
 import routes from './routes'
+import { localMiddleware } from './js/middlewares'
 const app = express()
 
 //Pug view engine
@@ -19,6 +20,8 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extends: true }))
+//localMiddleware
+app.use(localMiddleware)
 
 //라우터
 app.use(routes.home, globalRouter)
