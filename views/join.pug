@@ -3,6 +3,12 @@ extends layouts/main
 block content
   .form__container
     form(action=routes.join, method="post")
-        input(type="email", name="email", placeholder="Email@")
-        input(type="password", name="password", placeholder="Password")
-        input(type="submit", value="Join")
+      input(type="text", name="name", placeholder="Your Name")
+      input(type="text", name="nickname", placeholder="Nickname")
+      input(type="email", name="email", placeholder="Email@")
+      input(type="password", name="password", placeholder="Password")
+      input(type="password", name="password2", placeholder="Check Password")
+      input(type="submit", value="Join")
+    
+    include partials/socialLogin
+      
