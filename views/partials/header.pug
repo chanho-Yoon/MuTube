@@ -1,9 +1,14 @@
 header.header
   .header__column
-    i.fas.fa-play-circle
+    a(href=routes.home)
+      i.fas.fa-play-circle
+
+  .header__column
+    form(action=routes.search, method="get")
+      input(type="text", placeholder="Search.." name="search_word")
   .header__column
     ul
       li
-        a(href=routes.Join) Join
+        a(href=routes.join) Join
       li
-        a(href=routes.Login) Login
+        a(href=routes.login) Login
