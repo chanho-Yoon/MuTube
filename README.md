@@ -6,11 +6,11 @@ MuTube (Music Tube)
 
 ## Pages
 - [ ] Home
-- [ ] Join
-- [ ] Login
+- [x] Join
+- [x] Login
 - [x] Search
-- [ ] User Detail
-- [ ] Edit Profile
-- [ ] change Password
-- [ ] Video Upload
-- [ ] Video Edit
+- [x] User Detail
+- [x] Edit Profile
+- [x] change Password
+- [x] Video Upload
+- [x] Video Edit
