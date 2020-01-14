@@ -4,7 +4,7 @@ export const videos = [
     title: 'video test title',
     description: 'I love js',
     views: 24,
-    videoFile: 'https://archive.org/details/BigBuckBunny_124',
+    videoFile: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4',
     creator: {
       id: 1234,
       name: 'Chanho',
@@ -16,7 +16,7 @@ export const videos = [
     title: 'video test title2222',
     description: 'I love js2',
     views: 24,
-    videoFile: 'https://archive.org/details/BigBuckBunny_124',
+    videoFile: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4',
     creator: {
       id: 1234,
       name: 'hohoho',
@@ -28,7 +28,7 @@ export const videos = [
     title: 'video test title33333',
     description: 'I love js3',
     views: 24,
-    videoFile: 'https://archive.org/details/BigBuckBunny_124',
+    videoFile: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4',
     creator: {
       id: 1234,
       name: 'hahaha',
@@ -40,7 +40,7 @@ export const videos = [
     title: 'video test title44444',
     description: 'I love js4',
     views: 24,
-    videoFile: 'https://archive.org/details/BigBuckBunny_124',
+    videoFile: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4',
     creator: {
       id: 1234,
       name: 'cacaca',
