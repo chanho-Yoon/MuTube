@@ -1,5 +1,7 @@
+import { videos } from '../js/dbtest'
+
 export const home = (req, res) => {
-  res.render('home', { pageTitle: 'Home', testId: '1234ss' })
+  res.render('home', { pageTitle: 'Home', testId: '1234ss', videos })
 }
 export const search = (req, res) => {
   const {
