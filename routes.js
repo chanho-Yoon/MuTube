@@ -17,7 +17,7 @@ const CHANGE_PASSWORD = '/change-password'
 //비디오
 const VIDEOS = '/videos'
 const UPLOAD = '/upload'
-const VIDEOS_DETAIL = '/:id'
+const VIDEO_DETAIL = '/:id'
 const EDIT_VIDEO = '/:id/edit'
 const DELETE_VIDEO = '/:id/delete'
 
@@ -29,12 +29,24 @@ const routes = {
   logout: LOGOUT,
   search: SEARCH,
   users: USERS,
-  userDetail: USER_DETAIL,
+  userDetail: id => {
+    if (id) {
+      return `${USERS}/${id}`
+    } else {
+      return USER_DETAIL
+    }
+  },
   editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,
   upload: UPLOAD,
-  videoDetail: VIDEOS_DETAIL,
+  videoDetail: id => {
+    if (id) {
+      return `${VIDEOS}/${id}`
+    } else {
+      return VIDEO_DETAIL
+    }
+  },
   editVideo: EDIT_VIDEO,
   deleteVideo: DELETE_VIDEO
 }
