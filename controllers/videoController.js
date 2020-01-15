@@ -1,7 +1,8 @@
 import { videos } from '../js/dbtest'
+import routes from '../routes'
 
 export const home = (req, res) => {
-  res.render('home', { pageTitle: 'Home', testId: '1234ss', videos })
+  res.render('home', { pageTitle: 'Home', videos })
 }
 
 export const search = (req, res) => {
@@ -11,8 +12,15 @@ export const search = (req, res) => {
   res.render('search', { pageTitle: 'Search', search_word, videos })
 }
 
-export const upload = (req, res) => {
+export const getUpload = (req, res) => {
   res.render('upload', { pageTitle: 'Upload' })
+}
+export const postUpload = (req, res) => {
+  const {
+    body: { file, title, description }
+  } = req
+  //비디오 업로드 및 저장
+  res.redirect(routes.videoDetail(12345))
 }
 
 export const videoDetail = (req, res) => {
