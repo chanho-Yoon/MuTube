@@ -1,4 +1,4 @@
-import { videos } from '../js/db'
+import '../js/db'
 import routes from '../routes'
 
 export const home = (req, res) => {
