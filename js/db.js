@@ -1,6 +1,8 @@
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+dotenv.config()
 
-mongoose.connect('mongodb://localhost:27017/mutube', { userNewUrlParser: true, useFindAndModify: false })
+mongoose.connect(process.env.MONGO_URL, { userNewUrlParser: true, useFindAndModify: false })
 
 const db = mongoose.connection
 
@@ -10,4 +12,5 @@ const handleOpen = () => console.log('Connected to DB Success')
 const handleError = error => console.log(`Error DB Connection: ${error}`)
 //한번만 실행
 db.once('open', handleOpen)
+
 db.on('error', handleError)
