@@ -11,7 +11,8 @@ MuTube (Music Tube)
     VanillaJS , nodeJS(express)
     MVC design pattern(model, view, controller)
     Express template PUG
-    MongoDB - Mongoose
+    MongoDB - Mongoose 
+    dotenv(환경변수)
 
 ## Pages
 
