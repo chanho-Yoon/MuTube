@@ -8,11 +8,12 @@ MuTube (Music Tube)
 
 ## 사용한 기술
 
-    VanillaJS , nodeJS(express)
-    MVC design pattern(model, view, controller)
+    VanillaJS , nodeJS express
+    MVC design pattern( model, view, controller )
     Express template PUG
-    MongoDB - Mongoose 
-    dotenv(환경변수)
+    MongoDB - Mongoose
+    dotenv( 환경변수 )
+    Multer ( nodeJS 미들웨어 , 업로드한 파일 받아 처리 )
 
 ## Pages
 
