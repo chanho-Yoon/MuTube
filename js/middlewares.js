@@ -1,4 +1,7 @@
+import multer from 'multer'
 import routes from '../routes.js'
+
+const multerVideo = multer({ dest: 'videos/' })
 
 export const localMiddleware = (req, res, next) => {
   res.locals.siteName = 'MuTube'
@@ -11,3 +14,5 @@ export const localMiddleware = (req, res, next) => {
   }
   next()
 }
+
+export const uploadVideo = multerVideo.single('videoFile')
