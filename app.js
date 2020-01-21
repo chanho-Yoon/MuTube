@@ -14,6 +14,7 @@ const app = express()
 //Pug view engine
 app.set('view engine', 'pug')
 //미들웨어
+app.use('/uploads', express.static('uploads'))
 app.use(helmet())
 app.use(morgan('dev'))
 
