@@ -15,6 +15,7 @@ export const search = (req, res) => {
   const {
     query: { search_word }
   } = req
+  console.log(search_word)
   res.render('search', { pageTitle: 'Search', search_word, videos })
 }
 //업로드 --------------------------------------------------------------------------------------------------
@@ -38,8 +39,18 @@ export const postUpload = async (req, res) => {
 }
 
 //비디오 상세 --------------------------------------------------------------------------------------------------
-export const videoDetail = (req, res) => {
-  res.render('videoDetail', { pageTitle: 'Video Detail' })
+export const videoDetail = async (req, res) => {
+  const {
+    params: { id }
+  } = req
+  try {
+    const video = await Video.findById(id)
+    console.log(video)
+    res.render('videoDetail', { pageTitle: 'Video Detail', video })
+  } catch (error) {
+    //에러 발생시 홈으로 강제이동
+    res.redirect(routes.home)
+  }
 }
 
 //비디오 수정 --------------------------------------------------------------------------------------------------
