@@ -5,7 +5,7 @@ header.header
 
   .header__column
     form(action=routes.search, method="get")
-      input(type="text", placeholder="Search.." name="search_word")
+      input(type="text", placeholder="검색" name="search_word")
   .header__column
     ul
       if !user.idCheck
