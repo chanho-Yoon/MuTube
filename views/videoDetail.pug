@@ -4,7 +4,7 @@ block content
   .video__player
     video(src=`/${video.fileUrl}`,controls=true)
   .video__info
-    a(href=routes.editVideo) 수정
+    a(href=routes.editVideo(video.id)) 수정
     h5.video__title=video.title
     span.video__views=video.views
     p.video__description=video.description
