@@ -34,7 +34,7 @@ export const postUpload = async (req, res) => {
     description
   })
   console.log(newVideo)
-  //비디오 업로드 및 저장
+
   res.redirect(routes.videoDetail(newVideo.id))
 }
 
@@ -46,7 +46,7 @@ export const videoDetail = async (req, res) => {
   try {
     const video = await Video.findById(id)
     console.log(video)
-    res.render('videoDetail', { pageTitle: 'Video Detail', video })
+    res.render('videoDetail', { pageTitle: video.title, video })
   } catch (error) {
     //에러 발생시 홈으로 강제이동
     res.redirect(routes.home)
@@ -78,6 +78,14 @@ export const postEditVideo = async (req, res) => {
   }
 }
 //비디오 삭제 --------------------------------------------------------------------------------------------------
-export const deleteVideo = (req, res) => {
-  res.render('deleteVideo', { pageTitle: 'Delete Video' })
+export const deleteVideo = async (req, res) => {
+  const {
+    params: { id }
+  } = req
+  try {
+    await Video.findOneAndRemove({ _id: id })
+  } catch (error) {
+    console.log(`Controller deleteVideo error : ${error}`)
+  }
+  res.redirect(routes.home)
 }
