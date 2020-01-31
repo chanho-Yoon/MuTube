@@ -3,11 +3,11 @@ import Video from '../model/Video'
 
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find({})
+    const videos = await Video.find({}).sort({ _id: -1 })
     res.render('home', { pageTitle: 'Home', videos })
   } catch (error) {
     console.log(error)
-    res.render('home', { pageTitle: 'Home', videos })
+    res.render('home', { pageTitle: 'Home', videos: [] })
   }
 }
 //검색 --------------------------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ export const search = (req, res) => {
     query: { search_word }
   } = req
   console.log(search_word)
-  res.render('search', { pageTitle: 'Search', search_word, videos })
+  res.render('search', { pageTitle: 'Search', search_word })
 }
 //업로드 --------------------------------------------------------------------------------------------------
 export const getUpload = (req, res) => {
