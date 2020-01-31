@@ -11,12 +11,17 @@ export const home = async (req, res) => {
   }
 }
 //검색 --------------------------------------------------------------------------------------------------
-export const search = (req, res) => {
+export const search = async (req, res) => {
   const {
     query: { search_word }
   } = req
-  console.log(search_word)
-  res.render('search', { pageTitle: 'Search', search_word })
+  let videos = []
+  try {
+    videos = await Video.find({ title: { $regex: search_word, $options: 'i' } })
+  } catch (error) {
+    console.log(`Controller search error : ${error}`)
+  }
+  res.render('search', { pageTitle: 'Search', search_word, videos })
 }
 //업로드 --------------------------------------------------------------------------------------------------
 export const getUpload = (req, res) => {
