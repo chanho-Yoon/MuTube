@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import app from './app'
 import dotenv from 'dotenv'
 import './js/db'
