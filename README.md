@@ -17,7 +17,7 @@ MuTube (Music Tube)
 
 ## Pages
 
-    - [ ] Home
+    - [x] Home
     - [x] Join
     - [x] Login
     - [x] Search
