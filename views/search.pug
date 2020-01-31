@@ -5,9 +5,12 @@ block content
   .search__header
     h3 검색 : #{search_word}
   .search__videos
+    if videos.length === 0
+      h5 검색한 값을 찾지 못했습니다. #{search_word}
     each video in videos
       +videoBlock({
         title:video.title,
         views:video.views,
-        videoFile:video.videoFile
+        videoFile:video.videoFile,
+        id:video.id
       })
