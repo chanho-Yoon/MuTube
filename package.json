@@ -5,8 +5,10 @@
   "author": "chanho Yoon",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^9.7.4",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
+    "css-loader": "^3.4.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -15,7 +17,10 @@
     "mongoose": "^5.8.7",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
+    "node-sass": "^4.13.1",
+    "postcss-loader": "^3.0.0",
     "pug": "^2.0.4",
+    "sass-loader": "^8.0.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
