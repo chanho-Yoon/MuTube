@@ -5,6 +5,7 @@ html(lang="ko")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     <script src="https://kit.fontawesome.com/77c0cb9fdb.js" crossorigin="anonymous"></script>
+    link(rel="stylesheet", href="/static/styles.css")
     title #{siteName} | #{pageTitle}
   body
     //- header
@@ -14,5 +15,6 @@ html(lang="ko")
       block content
     //- footer
     include ../partials/footer.pug
+    script(src="/static/main.js")
 
     
