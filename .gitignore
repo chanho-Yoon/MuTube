@@ -149,4 +149,7 @@ temp/
 # Uploads path
 videos
 Uploads
+
+# webpack static 폴더
+static
 # End of https://www.gitignore.io/api/node,macos,visualstudiocode
