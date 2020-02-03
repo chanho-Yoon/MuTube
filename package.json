@@ -5,7 +5,9 @@
   "author": "chanho Yoon",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.8.3",
     "autoprefixer": "^9.7.4",
+    "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "css-loader": "^3.4.2",
@@ -26,7 +28,7 @@
   },
   "scripts": {
     "dev:server": "nodemon --exec babel-node init.js --delay 1.5",
-    "dev:assets": "WEBPACK_ENV=development webpack",
+    "dev:assets": "WEBPACK_ENV=development webpack -w",
     "build:assets": "WEBPACK_ENV=production webpack"
   },
   "devDependencies": {
