@@ -1,0 +1,48 @@
+.header {
+  background-color: $red;
+  margin-bottom: 50px;
+
+  .header__wrapper {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    .header__column {
+      //home
+      i {
+        color: white;
+        font-size: 40px;
+      }
+      //검색 부분
+      &:nth-child(2) {
+        width: 100%;
+        justify-self: center;
+      }
+      // 메뉴 목록 부분
+      &:nth-child(3) {
+        justify-self: end;
+      }
+      ul {
+        display: flex;
+        a {
+          font-weight: 600;
+          color: white;
+        }
+        li:not(:last-child) {
+          margin-right: 20px;
+        }
+      }
+      form {
+        width: 100%;
+        input {
+          padding: 7px 15px;
+          width: 100%;
+          border-radius: 3px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
