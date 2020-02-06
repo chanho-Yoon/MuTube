@@ -1,7 +1,4 @@
-@import '/config/_variables.scss';
-@import '/config/reset.scss';
+@import 'config/variables';
+@import 'config/reset.scss';
 @import 'main.scss';
-
 @import 'partials/header';
-body {
-}
