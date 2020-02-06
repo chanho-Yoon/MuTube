@@ -1,46 +1,171 @@
-.header {
-  background-color: $red;
-  margin-bottom: 50px;
+@import '../mixin';
 
-  .header__wrapper {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 1200px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    .header__column {
-      //home
-      i {
-        color: white;
-        font-size: 40px;
-      }
-      //검색 부분
-      &:nth-child(2) {
-        width: 100%;
-        justify-self: center;
-      }
-      // 메뉴 목록 부분
-      &:nth-child(3) {
-        justify-self: end;
-      }
-      ul {
-        display: flex;
-        a {
-          font-weight: 600;
+// NO
+@include mobile {
+  .header {
+    background-color: $red;
+    margin-bottom: 50px;
+
+    .header__wrapper {
+      padding: 5px 0px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      .header__column {
+        //home
+        i {
           color: white;
+          font-size: 40px;
+          margin-left: 15px;
         }
-        li:not(:last-child) {
-          margin-right: 20px;
+        //검색 부분
+        &:nth-child(2) {
+          width: 100%;
+          justify-self: center;
+        }
+        // 메뉴 목록 부분
+        &:nth-child(3) {
+          justify-self: end;
+        }
+        ul {
+          display: flex;
+          a {
+            font-weight: 600;
+            color: white;
+          }
+          li {
+            margin-right: 15px;
+          }
+        }
+        form {
+          width: 100%;
+          input {
+            padding: 7px 15px;
+            width: 100%;
+            border-radius: 3px;
+            font-size: 14px;
+            color: black;
+            &::placeholder {
+              font-weight: 300;
+              color: rgba(0, 0, 0, 0.7);
+            }
+          }
         }
       }
-      form {
-        width: 100%;
-        input {
-          padding: 7px 15px;
+    }
+  }
+}
+// NO
+@include tablet {
+  .header {
+    background-color: $red;
+    margin-bottom: 50px;
+
+    .header__wrapper {
+      padding: 5px 0px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      .header__column {
+        //home
+        i {
+          color: white;
+          font-size: 40px;
+          margin-left: 15px;
+        }
+        //검색 부분
+        &:nth-child(2) {
           width: 100%;
-          border-radius: 3px;
-          font-size: 14px;
+          justify-self: center;
+        }
+        // 메뉴 목록 부분
+        &:nth-child(3) {
+          justify-self: end;
+        }
+        ul {
+          display: flex;
+          a {
+            font-weight: 600;
+            color: white;
+          }
+          li {
+            margin-right: 15px;
+          }
+        }
+        form {
+          width: 100%;
+          input {
+            padding: 7px 15px;
+            width: 100%;
+            border-radius: 3px;
+            font-size: 14px;
+            color: black;
+            &::placeholder {
+              font-weight: 300;
+              color: rgba(0, 0, 0, 0.7);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// OK
+@include desktop {
+  .header {
+    background-color: $red;
+    margin-bottom: 50px;
+
+    .header__wrapper {
+      padding: 5px 0px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      .header__column {
+        //home
+        i {
+          color: white;
+          font-size: 40px;
+          margin-left: 15px;
+        }
+        //검색 부분
+        &:nth-child(2) {
+          width: 100%;
+          justify-self: center;
+        }
+        // 메뉴 목록 부분
+        &:nth-child(3) {
+          justify-self: end;
+        }
+        ul {
+          display: flex;
+          a {
+            font-weight: 600;
+            color: white;
+          }
+          li {
+            margin-right: 15px;
+          }
+        }
+        form {
+          width: 100%;
+          input {
+            padding: 7px 15px;
+            width: 100%;
+            border-radius: 3px;
+            font-size: 14px;
+            color: black;
+            &::placeholder {
+              font-weight: 300;
+              color: rgba(0, 0, 0, 0.7);
+            }
+          }
         }
       }
     }
