@@ -5,11 +5,12 @@ const autoprefixer = require('autoprefixer')
 const ExtractCSS = require('extract-text-webpack-plugin')
 
 const MODE = process.env.WEBPACK_ENV
-const ENTRY_FILE = path.resolve(__dirname, 'assets', 'js', 'main.js')
+const MAIN_FILE = path.resolve(__dirname, 'assets', 'js', 'main.js')
+const HEADER_FILE = path.resolve(__dirname, 'assets', 'js', 'header.js')
 const OUTPUT_DIR = path.join(__dirname, 'static')
 
 const config = {
-  entry: ['@babel/polyfill', ENTRY_FILE],
+  entry: ['@babel/polyfill', MAIN_FILE, HEADER_FILE],
   mode: MODE,
   module: {
     rules: [
@@ -21,7 +22,6 @@ const config = {
           }
         ]
       },
-
       {
         test: /\.(scss)$/,
         use: ExtractCSS.extract([
