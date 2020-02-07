@@ -11,7 +11,7 @@
       width: 100%;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       align-items: center;
       .header__column {
         //home
@@ -68,7 +68,7 @@
       width: 100%;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       align-items: center;
       .header__column {
         //home
@@ -168,6 +168,25 @@
           }
         }
       }
+    }
+  }
+}
+
+#ul-list {
+  display: flex;
+  align-items: center;
+}
+
+//width 1024px 보다 작을 경우 검색창 숨기고 icon으로 검색 버튼 생성하도록
+.header__column-noshow {
+  display: none;
+}
+
+//창이 클 경우 생성된 검색버튼 숨기도록
+.ul-list {
+  li {
+    &:nth-child(1) {
+      display: none;
     }
   }
 }
