@@ -3,17 +3,23 @@ header.header
     .header__column
       a(href=routes.home)
         i.fab.fa-youtube
-    .header__column
+    .header__column#header__search
       form(action=routes.search, method="get")
-        input(type="text", placeholder="검색" name="search_word")
-    .header__column
-      ul
+        input(type="text" placeholder="검색" name="search_word")
+    .header__column#header__menu
+      ul#ul-list
         if !user.idCheck
+          li
+            button(type="button")#search__click
+              i.fas.fa-search
           li
             a(href=routes.join) 회원가입
           li
             a(href=routes.login) 로그인
         else
+          li
+            button(type="button")#search__click
+              i.fas.fa-search
           li
             a(href=`${routes.videos}${routes.upload}`) 업로드
           li
