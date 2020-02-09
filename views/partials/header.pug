@@ -1,9 +1,10 @@
 header.header
-  .header__wrapper
-    .header__column
+  .header__wrapper#header__wrapper
+    .header__column#header__icon
       a(href=routes.home)
         i.fab.fa-youtube
     .header__column#header__search
+      //- i.fas.fa-arrow-left
       form(action=routes.search, method="get")
         input(type="text" placeholder="검색" name="search_word")
     .header__column#header__menu
@@ -26,3 +27,4 @@ header.header
             a(href=routes.userDetail(user.id)) 프로필
           li
             a(href=routes.logout) 로그아웃
+        
