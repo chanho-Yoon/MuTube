@@ -1,6 +1,6 @@
 @import '../mixin';
 
-// NO
+// OK
 @include mobile {
   .header {
     background-color: $red;
@@ -57,7 +57,7 @@
     }
   }
 }
-// NO
+// OK
 @include tablet {
   .header {
     background-color: $red;
@@ -68,7 +68,7 @@
       width: 100%;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       align-items: center;
       .header__column {
         //home
@@ -171,10 +171,42 @@
     }
   }
 }
+//화면 width가  758px 줄어들었을때 검색버튼 클릭시 적용할 css
+@include search {
+  .header {
+    .header__wrapper-search {
+      padding: 5px 0px;
+      width: 100%;
+      .header__column {
+        display: flex;
+        justify-content: center;
+        form {
+          width: 75%;
+          input {
+            padding: 7px 15px;
+            width: 100%;
+            border-radius: 3px;
+            font-size: 14px;
+            color: black;
+            &::placeholder {
+              font-weight: 300;
+              color: rgba(0, 0, 0, 0.7);
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 #ul-list {
   display: flex;
   align-items: center;
+  i {
+    color: white;
+    font-size: 25px;
+    margin-left: 0px;
+  }
 }
 
 //width 1024px 보다 작을 경우 검색창 숨기고 icon으로 검색 버튼 생성하도록
