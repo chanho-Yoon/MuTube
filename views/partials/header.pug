@@ -4,7 +4,8 @@ header.header
       a(href=routes.home)
         i.fab.fa-youtube
     .header__column#header__search
-      //- i.fas.fa-arrow-left
+      a(href="#")#arrow-click.header__column-noshow
+        i.fas.fa-arrow-left
       form(action=routes.search, method="get")
         input(type="text" placeholder="검색" name="search_word")
     .header__column#header__menu
