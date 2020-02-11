@@ -1,0 +1,30 @@
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  form {
+    width: 100%;
+    max-width: 320px;
+    input {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+      &:last-child {
+        margin-bottom: 40px;
+      }
+    }
+    input[type='submit'] {
+      background: #56ccf2; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #2f80ed, #56ccf2); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #2f80ed, #56ccf2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      color: white;
+      font-weight: 700;
+    }
+  }
+}
