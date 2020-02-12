@@ -4,9 +4,9 @@ header.header
       a(href=routes.home)
         i.fas.fa-headphones
     .header__column#header__search
-      a(href="#")#arrow-click.header__column-noshow
-        i.fas.fa-arrow-left
       form(action=routes.search, method="get")
+        a(href="#")#arrow-click.header__column-noshow
+          i.fas.fa-arrow-left
         input(type="text" placeholder="검색" name="search_word")
     .header__column#header__menu
       ul#ul-list
