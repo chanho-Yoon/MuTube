@@ -6,18 +6,22 @@
   form {
     width: 100%;
     max-width: 320px;
+
     input {
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       width: 100%;
-      padding-top: 10px;
-      padding-bottom: 10px;
-
       &:not(:last-child) {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
       }
       &:last-child {
-        margin-bottom: 40px;
+        margin-bottom: 25px;
       }
+    }
+    textarea {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      margin-bottom: 25px;
+      width: 300px;
+      height: 100px;
     }
     input[type='submit'] {
       background: #56ccf2; /* fallback for old browsers */
@@ -26,5 +30,12 @@
       color: white;
       font-weight: 700;
     }
+  }
+  a {
+    width: 100%;
+    max-width: 320px;
+  }
+  button {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
 }
