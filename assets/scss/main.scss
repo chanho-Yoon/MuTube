@@ -11,18 +11,24 @@ body {
 
 main {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   min-height: 70vh;
 }
 
 input,
-button {
-  padding: 7px 15px;
+button,
+textarea {
   width: 100%;
+  max-width: 320px;
+  border: none;
   border-radius: 8px;
   font-size: 14px;
   color: black;
+  font-weight: 600;
+  resize: none;
+  padding: 10px 20px;
+  background-color: white;
   &::placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7);
