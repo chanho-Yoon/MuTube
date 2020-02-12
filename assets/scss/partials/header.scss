@@ -115,6 +115,7 @@
             border-radius: 8px;
             font-size: 14px;
             color: black;
+            max-width: 1400px;
             &::placeholder {
               font-weight: 300;
               color: rgba(0, 0, 0, 0.7);
@@ -139,6 +140,7 @@
       width: 100%;
       margin: 0 auto;
       display: grid;
+      // grid-template-columns: repeat(3, 1fr);
       grid-template-columns: 30% 40% 30%;
       align-items: center;
       .header__column {
@@ -175,6 +177,7 @@
             border-radius: 8px;
             font-size: 14px;
             color: black;
+            max-width: 1400px;
             &::placeholder {
               font-weight: 300;
               color: rgba(0, 0, 0, 0.7);
@@ -203,6 +206,8 @@
         }
         form {
           width: 70%;
+          display: flex;
+          align-items: center;
           input {
             padding: 7px 15px;
             width: 100%;
