@@ -16,9 +16,10 @@ main {
   min-height: 70vh;
 }
 
-input,
+input:not([type='file']),
 button,
-textarea {
+textarea,
+.fileUpload {
   width: 100%;
   max-width: 320px;
   border: none;
@@ -28,9 +29,40 @@ textarea {
   font-weight: 600;
   resize: none;
   padding: 10px 20px;
+  box-sizing: border-box;
   background-color: white;
   &::placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7);
+  }
+  cursor: pointer;
+}
+// 비디오 디테일 버튼 css
+.video__info {
+  button {
+    background-color: #2f80ed;
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+}
+// 비디오 수정 삭제 버튼 css
+button.delete {
+  background-color: #e74c3c;
+  color: white;
+  &:hover {
+    background-color: red;
+    animation: btn 2s ease-in infinite;
+  }
+}
+
+@keyframes btn {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: #e74c3c;
+  }
+  100% {
+    background-color: red;
   }
 }
