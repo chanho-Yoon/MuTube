@@ -5,7 +5,10 @@
   "author": "chanho Yoon",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
     "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.7.7",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
@@ -20,14 +23,14 @@
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
     "node-sass": "^4.13.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1",
     "postcss-loader": "^3.0.0",
     "pug": "^2.0.4",
     "sass-loader": "^8.0.2",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "@babel/core": "^7.7.7",
-    "@babel/node": "^7.7.7",
-    "@babel/preset-env": "^7.7.7"
+    "webpack-cli": "^3.3.10"
   },
   "scripts": {
     "dev:server": "nodemon --exec babel-node init.js --delay 1.5",
