@@ -29,5 +29,5 @@ const VideoSchema = new Schema({
 })
 
 //model 생성
-const model = mongoose.model('Video', VideoSchema)
-export default model
+const models = mongoose.model('Video', VideoSchema)
+export default models
