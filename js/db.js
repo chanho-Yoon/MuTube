@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 // eslint-disable-next-line no-undef
-mongoose.connect(process.env.MONGO_URL, { userNewUrlParser: true, useFindAndModify: false })
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
 
 const db = mongoose.connection
 
