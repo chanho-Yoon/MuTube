@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
 
+// eslint-disable-next-line no-undef
 mongoose.connect(process.env.MONGO_URL, { userNewUrlParser: true, useFindAndModify: false })
 
 const db = mongoose.connection
