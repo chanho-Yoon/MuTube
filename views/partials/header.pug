@@ -10,7 +10,7 @@ header.header
         input(type="text" placeholder="검색" name="search_word")
     .header__column#header__menu
       ul#ul-list
-        if !user.idCheck
+        if !user
           li
             button(type="button")#search__click
               i.fas.fa-search
