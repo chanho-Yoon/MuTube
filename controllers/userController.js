@@ -1,12 +1,13 @@
 import routes from '../routes'
 import User from '../models/User'
+import passport from 'passport'
 //GET 방식
 export const getJoin = (req, res) => {
   res.render('Join', { pageTitle: 'Join' })
 }
 
 //POST 방식
-export const postJoin = async (req, res) => {
+export const postJoin = async (req, res, next) => {
   const {
     body: { name, email, nickname, password, password2 }
   } = req
@@ -23,20 +24,25 @@ export const postJoin = async (req, res) => {
         nickname
       })
       await User.register(user, password)
+      next()
     } catch (error) {
       console.log(error)
+      res.redirect(routes.home)
     }
 
     // 사용자 로그인
-    res.redirect(routes.home)
   }
 }
+
 export const getLogin = (req, res) => {
   res.render('Login', { pageTitle: 'Login' })
 }
-export const postLogin = (req, res) => {
-  res.redirect(routes.home)
-}
+export const postLogin = passport.authenticate('local', {
+  //로그인 실패시 failure, 성공시 success
+  failureRedirect: routes.login,
+  successRedirect: routes.home
+})
+
 export const logout = (req, res) => {
   // 로그아웃
   res.redirect(routes.home)
