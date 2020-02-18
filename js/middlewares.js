@@ -8,7 +8,7 @@ export const localMiddleware = (req, res, next) => {
   res.locals.routes = routes
 
   //사용자 user
-  res.locals.user = req.user || {}
+  res.locals.user = req.user || null
   next()
 }
 
