@@ -21,6 +21,16 @@ const VIDEO_DETAIL = '/:id'
 const EDIT_VIDEO = '/:id/edit'
 const DELETE_VIDEO = '/:id/delete'
 
+// Github
+const GITHUB = '/auth/github'
+const GITHUB_CALLBACK = '/auth/github/callback'
+// Facebook
+const FACEBOOK = '/auth/facebook'
+const FACEBOOK_CALLBACK = '/auth/facebook/callback'
+// Google
+const GOOGLE = '/auth/google'
+const GOOGLE_CALLBACK = '/auth/google/callback'
+
 //경로를 저장할 오브젝트 생성
 const routes = {
   home: HOME,
@@ -60,7 +70,13 @@ const routes = {
     } else {
       return DELETE_VIDEO
     }
-  }
+  },
+  github: GITHUB,
+  githubCallback: GITHUB_CALLBACK,
+  facebook: FACEBOOK,
+  facebookCallback: FACEBOOK_CALLBACK,
+  google: GOOGLE,
+  googleCallback: GOOGLE_CALLBACK
 }
 
 export default routes
