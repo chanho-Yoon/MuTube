@@ -33,10 +33,15 @@ export const postJoin = async (req, res, next) => {
     // 사용자 로그인
   }
 }
-
 export const getLogin = (req, res) => {
   res.render('Login', { pageTitle: 'Login' })
 }
+//github로 로그인
+export const githubLogin = 
+export const githubLoginCallback = (accessToken, refreshToken, profile, cb) => {
+  console.log(accessToken, refreshToken, profile, cb)
+}
+
 export const postLogin = passport.authenticate('local', {
   //로그인 실패시 failure, 성공시 success
   failureRedirect: routes.login,
@@ -45,6 +50,7 @@ export const postLogin = passport.authenticate('local', {
 
 export const logout = (req, res) => {
   // 로그아웃
+  req.logout()
   res.redirect(routes.home)
 }
 export const userDetail = (req, res) => res.render('UserDetail', { pageTitle: 'User Detail' })
