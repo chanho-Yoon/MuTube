@@ -29,18 +29,22 @@ export const postJoin = async (req, res, next) => {
       console.log(error)
       res.redirect(routes.home)
     }
-
-    // 사용자 로그인
   }
 }
+
 export const getLogin = (req, res) => {
   res.render('Login', { pageTitle: 'Login' })
 }
 //github로 로그인
-export const githubLogin = 
+export const githubLogin = passport.authenticate('github')
+
 export const githubLoginCallback = (accessToken, refreshToken, profile, cb) => {
   console.log(accessToken, refreshToken, profile, cb)
 }
+export const postGithubLogIn = (req, res) => {
+  res.send(routes.home)
+}
+///////////////////////////////
 
 export const postLogin = passport.authenticate('local', {
   //로그인 실패시 failure, 성공시 success
