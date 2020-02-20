@@ -1,14 +1,17 @@
 .social-login
   hr
   button.social-login__github
-    span
-      i.fab.fa-github
-    |Github 로그인
+    a(href=routes.github)
+      span
+        i.fab.fa-github
+      |Github 로그인
   button.social-login__facebook
-    span
-      i.fab.fa-facebook
-    |Facebook 로그인
-  button.social-login__gmail
-    span
-      i.fab.fa-google
-    |Gmail 로그인
+    a(href=routes.facebook)  
+      span
+        i.fab.fa-facebook
+      |Facebook 로그인
+  button.social-login__google
+    a(href=routes.google)
+      span
+        i.fab.fa-google
+      |Google 로그인
