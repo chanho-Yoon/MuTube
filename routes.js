@@ -12,6 +12,7 @@ const USER_DETAIL = '/:id'
 // /users/id("hi123")
 const EDIT_PROFILE = '/edit-profile'
 const CHANGE_PASSWORD = '/change-password'
+const ME = '/me'
 //
 
 //비디오
@@ -39,6 +40,7 @@ const routes = {
   logout: LOGOUT,
   search: SEARCH,
   users: USERS,
+  me: ME,
   userDetail: id => {
     if (id) {
       return `${USERS}/${id}`
