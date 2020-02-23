@@ -10,7 +10,7 @@ header.header
         input(type="text" placeholder="검색" name="search_word")
     .header__column#header__menu
       ul#ul-list
-        if !user
+        if !loggedUser
           li
             button(type="button")#search__click
               i.fas.fa-search
@@ -25,7 +25,7 @@ header.header
           li
             a(href=`${routes.videos}${routes.upload}`) 업로드
           li
-            a(href=routes.userDetail(user.id)) 프로필
+            a(href=routes.me) 프로필
           li
             a(href=routes.logout) 로그아웃
         
