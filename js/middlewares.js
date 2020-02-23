@@ -8,7 +8,7 @@ export const localMiddleware = (req, res, next) => {
   res.locals.routes = routes
 
   //사용자 user
-  res.locals.user = req.user || null
+  res.locals.loggedUser = req.user || null
   next()
 }
 //로그인 상태라면 접근하면 안되는 경로를 처리
