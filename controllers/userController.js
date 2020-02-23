@@ -40,8 +40,9 @@ export const githubLogin = passport.authenticate('github')
 
 export const githubLoginCallback = async (accessToken, refreshToken, profile, cb) => {
   const {
-    _json: { id, avatar_url, name, email }
+    _json: { id, avatar_url, login: name, email }
   } = profile
+  console.log(profile)
   try {
     const user = await User.findOne({ email: email })
     //동일한 이메을 가졌을 때는 이미 가입중인 사용자라 바로 로그인하도록 아니라면 신규 사용자 생성
@@ -78,6 +79,11 @@ export const logout = (req, res) => {
   req.logout()
   res.redirect(routes.home)
 }
+
+export const getMe = (req, res) => {
+  res.render('UserDetail', { pageTitle: 'User Detail', user: req.user })
+}
+
 export const userDetail = (req, res) => res.render('UserDetail', { pageTitle: 'User Detail' })
 export const editProfile = (req, res) => res.render('EditProfile', { pageTitle: 'Edit Profile' })
 export const changePassword = (req, res) => res.render('ChangePassword', { pageTitle: 'ChangePassword' })
