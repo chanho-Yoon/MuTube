@@ -66,8 +66,17 @@ export const githubLoginCallback = async (accessToken, refreshToken, profile, cb
 export const postGithubLogIn = (req, res) => {
   res.redirect(routes.home)
 }
-///////////////////////////////
+//-----------------------------------------------------------------------------------
+//facebook로 로그인
+export const facebookLogin = passport.authenticate('facebook')
 
+export const facebookLoginCallback = async (accessToken, refreshToken, profile, cb) => {
+  console.log(accessToken, refreshToken, profile, cb)
+}
+export const postFacebookLogIn = (req, res) => {
+  res.redirect(routes.home)
+}
+//-----------------------------------------------------------------------------------
 export const postLogin = passport.authenticate('local', {
   //로그인 실패시 failure, 성공시 success
   failureRedirect: routes.login,
@@ -84,6 +93,17 @@ export const getMe = (req, res) => {
   res.render('UserDetail', { pageTitle: 'User Detail', user: req.user })
 }
 
-export const userDetail = (req, res) => res.render('UserDetail', { pageTitle: 'User Detail' })
+export const userDetail = async (req, res) => {
+  //url에 users/무작위값 을 넣었을 경우 홈으로 바로 이동 되도록
+  try {
+    const {
+      params: { id }
+    } = req
+    const user = await User.findById(id)
+    res.render('UserDetail', { pageTitle: 'User Detail', user })
+  } catch (error) {
+    res.redirect(routes.home)
+  }
+}
 export const editProfile = (req, res) => res.render('EditProfile', { pageTitle: 'Edit Profile' })
 export const changePassword = (req, res) => res.render('ChangePassword', { pageTitle: 'ChangePassword' })
