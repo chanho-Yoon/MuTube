@@ -42,7 +42,6 @@ export const githubLoginCallback = async (accessToken, refreshToken, profile, cb
   const {
     _json: { id, avatar_url, login: name, email }
   } = profile
-  console.log(profile)
   try {
     const user = await User.findOne({ email: email })
     //동일한 이메을 가졌을 때는 이미 가입중인 사용자라 바로 로그인하도록 아니라면 신규 사용자 생성
@@ -67,7 +66,7 @@ export const postGithubLogIn = (req, res) => {
   res.redirect(routes.home)
 }
 //-----------------------------------------------------------------------------------
-//facebook로 로그인
+//facebook로 로그인 , https 문제로 ngrok로 https 도메인 생성 후 테스트 해봐도 페이스북 개발자 페이지에서 등록되지 않음.. 다음 https때 테스트 예정
 export const facebookLogin = passport.authenticate('facebook')
 
 export const facebookLoginCallback = async (accessToken, refreshToken, profile, cb) => {
@@ -77,6 +76,38 @@ export const postFacebookLogIn = (req, res) => {
   res.redirect(routes.home)
 }
 //-----------------------------------------------------------------------------------
+// google로 로그인
+export const googleLogin = passport.authenticate('google', { scope: ['profile', 'email'] })
+
+export const googleLoginCallback = async (accessToken, refreshToken, profile, cb) => {
+  const {
+    _json: { sub: id, picture: avatar_url, name, email }
+  } = profile
+
+  try {
+    const user = await User.findOne({ email: email })
+    if (user) {
+      user.googleId = id
+      user.save()
+      return cb(null, user)
+    } else {
+      const newUser = await User.create({
+        email,
+        name,
+        googleId: id,
+        avatarUrl: avatar_url
+      })
+      return cb(null, newUser)
+    }
+  } catch (error) {
+    return cb(error)
+  }
+}
+export const postGoogleLogin = (req, res) => {
+  res.redirect(routes.home)
+}
+//-----------------------------------------------------------------------------------
+
 export const postLogin = passport.authenticate('local', {
   //로그인 실패시 failure, 성공시 success
   failureRedirect: routes.login,
