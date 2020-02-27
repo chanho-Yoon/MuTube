@@ -9,8 +9,8 @@
 @include mobile {
   .header {
     background: #56ccf2; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2f80ed, #56ccf2); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2f80ed, #56ccf2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #368dff, #56ccf2); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #368dff, #56ccf2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     margin-bottom: 50px;
     .header__wrapper {
@@ -51,7 +51,7 @@
           input {
             padding: 7px 15px;
             width: 100%;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 14px;
             color: black;
             &::placeholder {
@@ -68,8 +68,8 @@
 @include tablet {
   .header {
     background: #56ccf2; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2f80ed, #56ccf2); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2f80ed, #56ccf2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #368dff, #56ccf2); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #368dff, #56ccf2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     margin-bottom: 50px;
 
@@ -112,7 +112,7 @@
           input {
             padding: 7px 15px;
             width: 100%;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 14px;
             color: black;
             max-width: 1400px;
@@ -130,8 +130,8 @@
 @include desktop {
   .header {
     background: #56ccf2; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2f80ed, #56ccf2); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2f80ed, #56ccf2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #368dff, #56ccf2); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #368dff, #56ccf2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     margin-bottom: 50px;
 
@@ -174,7 +174,7 @@
           input {
             padding: 7px 15px;
             width: 100%;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 14px;
             color: black;
             max-width: 1400px;
@@ -212,7 +212,7 @@
           input {
             padding: 7px 15px;
             width: 100%;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 14px;
             color: black;
             &::placeholder {

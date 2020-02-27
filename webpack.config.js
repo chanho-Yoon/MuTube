@@ -10,7 +10,7 @@ const HEADER_FILE = path.resolve(__dirname, 'assets', 'js', 'header.js')
 const OUTPUT_DIR = path.join(__dirname, 'static')
 
 const config = {
-  entry: ['@babel/polyfill', MAIN_FILE, HEADER_FILE],
+  entry: ['@babel/polyfill', HEADER_FILE, MAIN_FILE],
   mode: MODE,
   module: {
     rules: [
