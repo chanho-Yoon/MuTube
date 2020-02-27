@@ -7,7 +7,7 @@
       |Github 로그인
   button.social-login__facebook#social-login__facebook
     //- a(href=routes.facebook)
-    a(href=routes.login)  
+    a(href="#")  
       span
         i.fab.fa-facebook
       |Facebook 로그인
@@ -16,3 +16,14 @@
       span
         i.fab.fa-google
       |Google 로그인
+
+//- script 
+script(type='text/javascript').
+  function readyServices() {
+    alert('서비스 준비 중 입니다. 깃허브 or 구글 인증을 사용해주세요.')
+  }
+
+  window.onload = function() {
+    const facebookButton = document.getElementById('social-login__facebook')
+    facebookButton.addEventListener('click', readyServices)
+  }
