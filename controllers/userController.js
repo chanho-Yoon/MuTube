@@ -9,7 +9,7 @@ export const getJoin = (req, res) => {
 //POST 방식
 export const postJoin = async (req, res, next) => {
   const {
-    body: { name, email, nickname, password, password2 }
+    body: { name, email, password, password2 }
   } = req
   if (password !== password2) {
     //패스워드가 일치하지 않다는 상태 코드(status code) 전달
@@ -20,8 +20,7 @@ export const postJoin = async (req, res, next) => {
     try {
       const user = await User({
         name,
-        email,
-        nickname
+        email
       })
       await User.register(user, password)
       next()
@@ -136,5 +135,27 @@ export const userDetail = async (req, res) => {
     res.redirect(routes.home)
   }
 }
-export const editProfile = (req, res) => res.render('EditProfile', { pageTitle: 'Edit Profile' })
-export const changePassword = (req, res) => res.render('ChangePassword', { pageTitle: 'ChangePassword' })
+export const getEditProfile = (req, res) => {
+  res.render('EditProfile', { pageTitle: 'Edit Profile' })
+}
+export const postEditProfile = async (req, res) => {
+  const {
+    body: { name, email },
+    file
+  } = req
+  try {
+    await User.findByIdAndUpdate(req.user.id, {
+      name,
+      email,
+      // 새로운 file을 받지 못했다면 기존의 avatarUrl을 그대로 사용
+      avatarUrl: file ? file.path : req.user.avatarUrl
+    })
+    res.redirect(routes.me)
+  } catch (error) {
+    res.render('editProfile', { pageTitle: 'Edit Profile' })
+  }
+}
+export const getChangePassword = (req, res) => {
+  res.render('ChangePassword', { pageTitle: 'ChangePassword' })
+}
+export const postChangePassword = (req, res) => {}
