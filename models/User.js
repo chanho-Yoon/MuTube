@@ -3,7 +3,6 @@ import passportLocalMongoose from 'passport-local-mongoose'
 
 const UserSchema = new mongoose.Schema({
   name: String,
-  nickname: String,
   email: String,
   avatarUrl: String,
   facebookId: Number,
