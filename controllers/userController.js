@@ -152,10 +152,30 @@ export const postEditProfile = async (req, res) => {
     })
     res.redirect(routes.me)
   } catch (error) {
-    res.render('editProfile', { pageTitle: 'Edit Profile' })
+    res.redircet(routes.editProfile)
   }
 }
+
+//비밀번호 변경
 export const getChangePassword = (req, res) => {
   res.render('ChangePassword', { pageTitle: 'ChangePassword' })
 }
-export const postChangePassword = (req, res) => {}
+export const postChangePassword = async (req, res) => {
+  const {
+    body: { oldPassword, newPassword, checkPassword }
+  } = req
+  try {
+    if (newPassword !== checkPassword) {
+      res.status(400)
+      res.redirect(`/users${routes.changePassword}`)
+      return
+    }
+    //passport-local-mongoose 함수 changePassword
+    await req.user.changePassword(oldPassword, newPassword)
+
+    res.redirect(routes.me)
+  } catch (error) {
+    res.status(400)
+    res.redirect(`/users${routes.changePassword}`)
+  }
+}
