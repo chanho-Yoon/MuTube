@@ -32,14 +32,17 @@ export const postUpload = async (req, res) => {
     body: { title, description },
     file: { path }
   } = req
-  console.log(`path: ${path}`)
+
   const newVideo = await Video.create({
     fileUrl: path,
     title,
-    description
+    description,
+    creator: req.user.id
   })
-  console.log(newVideo)
 
+  //새로운 비디오 생성 후 로그인된 유저스키마 videos에 새롭게 등록되는 비디오의 id를 저장
+  req.user.videos.push(newVideo.id)
+  req.user.save()
   res.redirect(routes.videoDetail(newVideo.id))
 }
 
@@ -49,8 +52,8 @@ export const videoDetail = async (req, res) => {
     params: { id }
   } = req
   try {
-    const video = await Video.findById(id)
-    console.log(video)
+    // populate() 사용하여 id에 해당하는 비디오를 찾아 creator 객체도 같이 넘겨준다
+    const video = await Video.findById(id).populate('creator')
     res.render('videoDetail', { pageTitle: video.title, video })
   } catch (error) {
     //에러 발생시 홈으로 강제이동
