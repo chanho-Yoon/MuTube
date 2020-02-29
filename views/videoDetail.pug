@@ -5,14 +5,20 @@ block content
     .video__player
       video(src=`/${video.fileUrl}`,controls=true)
     .video__info
-      a(href=routes.editVideo(video.id))
-        button 수정
+      //- video생성자의 id와 현재 로그인 중인 id가 동일하면 수정 버튼이 보이도록
+      if loggedUser
+        if video.creator.id === loggedUser.id
+          a(href=routes.editVideo(video.id))
+            button 수정
       h5.video__title=video.title
       p.video__description=video.description
       if video.views === 1
         span.video__views 1 view
       else
         span.video__views #{video.views} view
+      .video__author
+        | 작성자 
+        a(href=routes.userDetail(video.creator.id)) #{video.creator.name}
     .video__comments
       if video.comments.length === 1
         span.video__comment-number 1 comment
