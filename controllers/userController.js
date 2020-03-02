@@ -34,6 +34,11 @@ export const postJoin = async (req, res, next) => {
 export const getLogin = (req, res) => {
   res.render('Login', { pageTitle: 'Login' })
 }
+export const postLogin = passport.authenticate('local', {
+  //로그인 실패시 failure, 성공시 success
+  failureRedirect: routes.login,
+  successRedirect: routes.home
+})
 //github로 로그인
 export const githubLogin = passport.authenticate('github')
 
@@ -107,12 +112,6 @@ export const postGoogleLogin = (req, res) => {
 }
 //-----------------------------------------------------------------------------------
 
-export const postLogin = passport.authenticate('local', {
-  //로그인 실패시 failure, 성공시 success
-  failureRedirect: routes.login,
-  successRedirect: routes.home
-})
-
 export const logout = (req, res) => {
   // 로그아웃
   req.logout()
@@ -125,11 +124,11 @@ export const getMe = (req, res) => {
 
 export const userDetail = async (req, res) => {
   //url에 users/무작위값 을 넣었을 경우 홈으로 바로 이동 되도록
+  const {
+    params: { id }
+  } = req
   try {
-    const {
-      params: { id }
-    } = req
-    const user = await User.findById(id)
+    const user = await User.findById(id).populate('videos')
     res.render('UserDetail', { pageTitle: 'User Detail', user })
   } catch (error) {
     res.redirect(routes.home)
