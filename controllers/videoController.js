@@ -68,7 +68,12 @@ export const getEditVideo = async (req, res) => {
   } = req
   try {
     const video = await Video.findById(id)
-    res.render('editVideo', { pageTitle: `Edit ${video.title}`, video })
+    //로그인한 사용자가 다른 사용자의 비디오 수정을 하지 못하도록
+    if (video.creator !== req.user.id) {
+      throw Error()
+    } else {
+      res.render('editVideo', { pageTitle: `Edit ${video.title}`, video })
+    }
   } catch (error) {
     res.redirect(routes.home)
   }
@@ -91,7 +96,13 @@ export const deleteVideo = async (req, res) => {
     params: { id }
   } = req
   try {
-    await Video.findOneAndRemove({ _id: id })
+    const video = await Video.findById(id)
+    //로그인한 사용자가 다른 사용자의 비디오 삭제를 하지 못하도록
+    if (video.creator !== req.user.id) {
+      throw Error()
+    } else {
+      await Video.findOneAndRemove({ _id: id })
+    }
   } catch (error) {
     console.log(`Controller deleteVideo error : ${error}`)
   }
