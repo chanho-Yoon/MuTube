@@ -5,6 +5,6 @@ block content
     form(action=routes.editVideo(video.id), method="post")
       input(type="text", name="title", placeholder="제목", value=video.title)
       textarea(name="description", placeholder="내용")=video.description
-      input(type="submit", value="확인")
+      input(type="submit", value="업데이트")
     a.form-container__link(href=routes.deleteVideo(video.id)) 
       button.delete 삭제
