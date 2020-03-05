@@ -13,8 +13,9 @@ block content
             button 프로필 수정
           a(href=`/users${routes.changePassword}`)
             button 비밀번호 변경
-    .user-profile
+    .user-profile__name
       span=user.name+"님의 업로드 영상"
+    
   .home-videos
     each video in user.videos
       +videoBlock({
