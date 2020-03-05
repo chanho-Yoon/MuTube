@@ -1,9 +1,11 @@
 extends layouts/main
+include mixins/videoPlayer
 
 block content
   .video-detail__container
-    .video__player
-      video(src=`/${video.fileUrl}`,controls=true)
+    +videoPlayer({
+      src:video.fileUrl
+    })
     .video__info
       //- video생성자의 id와 현재 로그인 중인 id가 동일하면 수정 버튼이 보이도록
       if loggedUser
@@ -17,7 +19,7 @@ block content
       else
         span.video__views #{video.views} view
       .video__author
-        | 작성자 
+        span 작성자 
         a(href=routes.userDetail(video.creator.id)) #{video.creator.name}
     .video__comments
       if video.comments.length === 1
