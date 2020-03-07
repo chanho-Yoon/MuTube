@@ -6,11 +6,10 @@ const ExtractCSS = require('extract-text-webpack-plugin')
 
 const MODE = process.env.WEBPACK_ENV
 const MAIN_FILE = path.resolve(__dirname, 'assets', 'js', 'main.js')
-const HEADER_FILE = path.resolve(__dirname, 'assets', 'js', 'header.js')
 const OUTPUT_DIR = path.join(__dirname, 'static')
 
 const config = {
-  entry: ['@babel/polyfill', HEADER_FILE, MAIN_FILE],
+  entry: ['@babel/polyfill', MAIN_FILE],
   mode: MODE,
   module: {
     rules: [
