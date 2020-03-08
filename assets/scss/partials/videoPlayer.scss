@@ -1,11 +1,14 @@
 .videoPlayer {
   position: relative;
+  display: flex;
+  align-items: center;
   &:hover {
     .videoPlayer__controls {
       opacity: 1;
     }
   }
   video {
+    width: 100%;
     max-width: 100%;
   }
   .videoPlayer__controls {
