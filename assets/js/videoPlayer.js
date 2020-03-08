@@ -2,6 +2,7 @@ const videoContainer = document.getElementById('jsVideoPlayer')
 const videoPlayer = document.querySelector('#jsVideoPlayer video')
 const playBtn = document.getElementById('jsPlayButton')
 const volumeBtn = document.getElementById('jsVolumeButton')
+const screenBtn = document.getElementById('jsScreenButton')
 
 function handlePlayClick() {
   if (videoPlayer.paused) {
@@ -22,9 +23,24 @@ function handleVolumeClick() {
     volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>'
   }
 }
+
+function exitScreenClick() {
+  screenBtn.innerHTML = '<i class="fas fa-expand"></i>'
+  screenBtn.addEventListener('click', fullScreenClick)
+  document.webkitExitFullscreen()
+}
+
+function fullScreenClick() {
+  videoContainer.webkitRequestFullscreen()
+  screenBtn.innerHTML = '<i class="fas fa-compress"></i>'
+  screenBtn.removeEventListener('click', fullScreenClick)
+  screenBtn.addEventListener('click', exitScreenClick)
+}
+
 function init() {
   playBtn.addEventListener('click', handlePlayClick)
   volumeBtn.addEventListener('click', handleVolumeClick)
+  screenBtn.addEventListener('click', fullScreenClick)
 }
 
 if (videoContainer) {
