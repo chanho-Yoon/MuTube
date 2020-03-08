@@ -69,7 +69,7 @@ export const getEditVideo = async (req, res) => {
   try {
     const video = await Video.findById(id)
     //로그인한 사용자가 다른 사용자의 비디오 수정을 하지 못하도록
-    if (video.creator !== req.user.id) {
+    if (String(video.creator) !== req.user.id) {
       throw Error()
     } else {
       res.render('editVideo', { pageTitle: `Edit ${video.title}`, video })
