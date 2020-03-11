@@ -25,9 +25,11 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     font-size: 13px;
-    .videoPlayer__column:first-child {
+    .videoPlayer__column {
       display: flex;
       align-items: center;
+    }
+    .videoPlayer__column:first-child {
       span:first-child {
         margin-right: 10px;
       }
@@ -40,8 +42,33 @@
       justify-self: center;
     }
     i {
-      font-size: 15px;
+      font-size: 17px;
       cursor: pointer;
+    }
+    // 동영상 컨트롤로 부분에서 볼륨부분 hover시 나오게끔
+    .videoPlayer__column {
+      transition: all 2s;
+      .jsVolume {
+        display: flex;
+        align-items: center;
+        width: 10px;
+      }
+      .videoPlayer__volume {
+        opacity: 0;
+        width: 0;
+        padding: 0;
+        height: 5px;
+        margin-right: 10px;
+        transition-property: width;
+        transition-duration: 0.5s, 0.5s;
+      }
+      &:hover {
+        .videoPlayer__volume {
+          display: block;
+          width: 60px;
+          opacity: 1;
+        }
+      }
     }
   }
 }
