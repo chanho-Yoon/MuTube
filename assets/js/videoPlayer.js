@@ -1,11 +1,12 @@
 const videoContainer = document.getElementById('jsVideoPlayer')
-const videoPlayer = document.querySelector('#jsVideoPlayer #videoId')
+const videoPlayer = document.querySelector('#jsVideoPlayer video')
 const playBtn = document.getElementById('jsPlayButton')
-const volumeBtn = document.getElementById('jsVolumeButton')
+const volumeRange = document.getElementById('jsVolumeRange')
 const screenBtn = document.getElementById('jsScreenButton')
 const currentTime = document.getElementById('currentTime')
 const totalTime = document.getElementById('totalTime')
 const videoId = document.getElementById('videoId')
+const volumeIcon = document.getElementById('jsVolume')
 
 function handlePlayClick() {
   if (videoPlayer.paused) {
@@ -20,10 +21,21 @@ function handlePlayClick() {
 function handleVolumeClick() {
   if (videoPlayer.muted) {
     videoPlayer.muted = false
-    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>'
+    //볼륨 mute해제시 이전 volume값을 가져옴
+    if (videoPlayer.volume > 0.7) {
+      volumeRange.value = videoPlayer.volume
+      volumeIcon.innerHTML = '<i class="fas fa-volume-up"></i>'
+    } else if (videoPlayer.volume > 0.0) {
+      volumeRange.value = videoPlayer.volume
+      volumeIcon.innerHTML = '<i class="fas fa-volume-down"></i>'
+    } else {
+      volumeRange.value = videoPlayer.volume
+      volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>'
+    }
   } else {
+    volumeRange.value = 0
     videoPlayer.muted = true
-    volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>'
+    volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>'
   }
 }
 
@@ -82,18 +94,39 @@ function setTotalTime() {
 }
 
 function getCurrentTime() {
-  currentTime.innerHTML = formatDate(videoPlayer.currentTime)
+  currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime))
+}
+
+function handleEnded() {
+  videoPlayer.currentTime = 0
+  playBtn.innerHTML = '<i class="fas fa-play"></i>'
+}
+
+function handleDrag(event) {
+  const {
+    target: { value }
+  } = event
+  videoPlayer.volume = value
+
+  if (value > 0.7) {
+    volumeIcon.innerHTML = '<i class="fas fa-volume-up"></i>'
+  } else if (value > 0.0) {
+    volumeIcon.innerHTML = '<i class="fas fa-volume-down"></i>'
+  } else {
+    volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>'
+  }
 }
 
 function init() {
-  //비디오가 로드 되기 전에 시간을 호출하면 Nan 호출되는걸 방지
+  videoPlayer.volume = 0.5
   playBtn.addEventListener('click', handlePlayClick)
-  volumeBtn.addEventListener('click', handleVolumeClick)
+  volumeIcon.addEventListener('click', handleVolumeClick)
   screenBtn.addEventListener('click', fullScreenClick)
+  //비디오가 로드 되기 전에 시간을 호출하면 Nan 호출되는걸 방지
   videoId.addEventListener('loadedmetadata', setTotalTime)
+  videoId.addEventListener('ended', handleEnded)
+  volumeRange.addEventListener('input', handleDrag)
 }
-
-// eslint-disable-next-line no-constant-condition
 
 if (videoContainer) {
   init()
