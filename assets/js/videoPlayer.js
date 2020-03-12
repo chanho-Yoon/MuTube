@@ -8,6 +8,14 @@ const totalTime = document.getElementById('totalTime')
 const videoId = document.getElementById('videoId')
 const volumeIcon = document.getElementById('jsVolume')
 
+// fetch를 사용하여 view URL 실행
+const registerView = () => {
+  const id = window.location.href.split('/videos/')[1]
+  fetch(`/api/${id}/view`, {
+    method: 'POST'
+  })
+}
+
 function handlePlayClick() {
   if (videoPlayer.paused) {
     videoPlayer.play()
@@ -98,6 +106,7 @@ function getCurrentTime() {
 }
 
 function handleEnded() {
+  registerView() // 조회수 카운터 +1
   videoPlayer.currentTime = 0
   playBtn.innerHTML = '<i class="fas fa-play"></i>'
 }
