@@ -32,6 +32,10 @@ const FACEBOOK_CALLBACK = '/auth/facebook/callback'
 const GOOGLE = '/auth/google'
 const GOOGLE_CALLBACK = '/auth/google/callback'
 
+// API
+const API = '/api'
+const REGISTER_VIEW = '/:id/view'
+
 //경로를 저장할 오브젝트 생성
 const routes = {
   home: HOME,
@@ -78,7 +82,9 @@ const routes = {
   facebook: FACEBOOK,
   facebookCallback: FACEBOOK_CALLBACK,
   google: GOOGLE,
-  googleCallback: GOOGLE_CALLBACK
+  googleCallback: GOOGLE_CALLBACK,
+  api: API,
+  registerView: REGISTER_VIEW
 }
 
 export default routes
