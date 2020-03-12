@@ -33,9 +33,11 @@ block content
         else
           img.u-avatar(src="/uploads/avatars/defaultimg.png")
       .video__comments-enter
-        form(action="#", method="post")
+        form.add__comment#jsAddComment
           input(type="textarea" placeholder="댓글 추가...").video__comments-input
           .video__comments-submit
-            input(type="button" value="취소")
-            input(type="button" value="전송")
-          
+            input(type="reset" value="취소")
+            input(type="submit" value="전송")
+        ul.video__comments-list
+          each comment in video.comments
+            span=comment.text
