@@ -14,7 +14,8 @@ const CommentSchema = new Schema({
   creator: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  }
+  },
+  avatarUrl: String
 })
 
 const models = mongoose.model('Comment', CommentSchema)
