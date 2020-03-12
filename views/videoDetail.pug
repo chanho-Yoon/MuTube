@@ -26,3 +26,16 @@ block content
         span.video__comment-number 1 comment
       else
         span.video__comment-number #{video.comments.length} comments
+    .video__comments-box
+      .video__coments-avatar
+        if loggedUser 
+          img.u-avatar(src=loggedUser.avatarUrl)
+        else
+          img.u-avatar(src="/uploads/avatars/defaultimg.png")
+      .video__comments-enter
+        form(action="#", method="post")
+          input(type="textarea" placeholder="댓글 추가...").video__comments-input
+          .video__comments-submit
+            input(type="button" value="취소")
+            input(type="button" value="전송")
+          
