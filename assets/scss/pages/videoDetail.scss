@@ -6,7 +6,6 @@
     margin-top: 50px;
     width: 100%;
     max-width: 850px;
-
     button {
       width: 100px;
       margin-bottom: 15px;
@@ -35,8 +34,60 @@
   }
   .video__comments {
     margin-top: 25px;
+    margin-bottom: 25px;
     .video__comment-number {
       font-size: 18px;
+    }
+  }
+  .video__comments-box {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    height: 70px;
+    .u-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin-left: 15px;
+    }
+    .video__comments-enter {
+      margin-left: 10px;
+      width: 100%;
+      form {
+        // comments에서 댓글 입력하는 부분
+        .video__comments-input {
+          width: 98%;
+          max-width: 2000px;
+          border-bottom: 1px solid lightgray;
+          padding-left: 0;
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+        // comments 입력 부분에서 input 공통된 css
+        input {
+          background-color: #f5f5f5;
+          border-radius: 0;
+          font-weight: 300;
+        }
+        // comments 전송 버튼
+        input:last-child {
+          background-color: gray;
+          color: white;
+        }
+        // comments 취소, 전송버튼
+        .video__comments-submit {
+          width: 98%;
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 2px;
+          input {
+            width: 100%;
+            max-width: 70px;
+            height: 35px;
+            font-weight: 300;
+          }
+        }
+      }
     }
   }
 }
