@@ -151,8 +151,8 @@ export const postEditProfile = async (req, res) => {
     await User.findByIdAndUpdate(req.user.id, {
       name,
       email,
-      // 새로운 file을 받지 못했다면 기존의 avatarUrl을 그대로 사용
-      avatarUrl: file ? file.path : req.user.avatarUrl
+      // 새로운 file을 받지 못했다면 기존의 avatarUrl을 그대로 사 용 || /해준 이유는 이미지 경로문제 해결
+      avatarUrl: file ? `/${file.path}` : req.user.avatarUrl
     })
     res.redirect(routes.me)
   } catch (error) {
