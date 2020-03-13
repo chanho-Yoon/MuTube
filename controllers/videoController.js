@@ -141,7 +141,8 @@ export const postAddComment = async (req, res) => {
     const newComment = await Comment.create({
       text: comment,
       creator: user.id,
-      avatarUrl: user.id.avatarUrl
+      avatarUrl: user.avatarUrl,
+      name: user.name
     })
     video.comments.push(newComment.id)
     video.save()
