@@ -127,7 +127,7 @@ function handleDrag(event) {
 }
 
 function init() {
-  videoPlayer.volume = 0.5
+  videoPlayer.volume = 1
   playBtn.addEventListener('click', handlePlayClick)
   volumeIcon.addEventListener('click', handleVolumeClick)
   screenBtn.addEventListener('click', fullScreenClick)
