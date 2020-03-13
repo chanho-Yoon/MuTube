@@ -20,24 +20,37 @@ block content
         span.video__views #{video.views} view
       .video__author
         span 작성자 
-        a(href=routes.userDetail(video.creator.id)) #{video.creator.name}
+          a(href=routes.userDetail(video.creator.id)) #{video.creator.name}
     .video__comments
       if video.comments.length === 1
         span.video__comment-number 1 comment
       else
         span.video__comment-number #{video.comments.length} comments
-    .video__comments-box
+    .video__comments-box.comments-submit
       .video__coments-avatar
-        if loggedUser 
+        if loggedUser
           img.u-avatar(src=loggedUser.avatarUrl)
         else
           img.u-avatar(src="/uploads/avatars/defaultimg.png")
       .video__comments-enter
         form.add__comment#jsAddComment
-          input(type="textarea" placeholder="댓글 추가...").video__comments-input
-          .video__comments-submit
-            input(type="reset" value="취소")
-            input(type="submit" value="전송")
-        ul.video__comments-list
-          each comment in video.comments
-            span=comment.text
+          //- 로그인 아닐시에는 join화면으로 이동
+          if loggedUser
+            input(type="textarea" placeholder="댓글 추가...").video__comments-input
+            .video__comments-submit
+              input(type="reset" value="취소")
+              input(type="submit" value="전송")
+          else
+            a(href=routes.join)
+              input(type="textarea" placeholder="댓글 추가...").video__comments-input
+
+    .video__comments-box
+      ul.video__comments-list
+        each comment in video.comments
+          .video__comments-main
+            .video__comments-img
+              img.u-avatar(src=comment.avatarUrl)
+            .video__comments-content
+              span
+                a(href=routes.userDetail(comment.creator._id))=comment.name
+              span=comment.text
