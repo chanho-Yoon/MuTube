@@ -147,8 +147,13 @@ export const postAddComment = async (req, res) => {
     video.comments.push(newComment.id)
     video.save()
   } catch (error) {
+    //댓글 난사하다보면 400 에러.. 원인을 찾아봐야겠다..
+    console.log('postAddComment 에러')
     res.status(400)
   } finally {
-    res.end()
+    setTimeout(function() {
+      res.end()
+    }, 1000)
   }
+  // remove comment
 }
