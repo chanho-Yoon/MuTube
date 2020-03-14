@@ -101,10 +101,12 @@ function setTotalTime() {
   totalTime.innerHTML = formatDate(videoPlayer.duration)
 }
 
+//비디오 플레이 중 시간
 function getCurrentTime() {
   currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime))
 }
 
+//비디오 종료시
 function handleEnded() {
   registerView() // 조회수 카운터 +1
   videoPlayer.currentTime = 0
