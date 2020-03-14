@@ -96,6 +96,7 @@
     .video__comments-list {
       display: flex;
       flex-direction: column;
+      position: relative;
       width: 100%;
       max-width: 2000px;
       .video__comments-main {
@@ -122,16 +123,23 @@
           color: gray;
           font-size: 15px;
           cursor: pointer;
-          //댓글 옵션 리스트
-          .video__comments-menu-list {
-            // display: none;
-            width: 50px;
-          }
         }
         &:hover {
           .video__comments-menu {
             display: block;
           }
+        }
+        .video__comments-menu-list {
+          // display: none;
+          position: absolute;
+          display: none;
+          top: 27px;
+          right: 10px;
+          width: 50px;
+          border: 1px solid black;
+        }
+        .video__comments-menu-list-show {
+          display: block;
         }
       }
     }
