@@ -22,14 +22,14 @@ block content
         span 작성자 
           a(href=routes.userDetail(video.creator.id)) #{video.creator.name}
     .video__comments
-      if video.comments.length === 1
-        span.video__comment-number 1 comment
-      else
-        span.video__comment-number #{video.comments.length} comments
+        span.video__comment-number#jsCommentsCount=video.comments.length+" comment"
     .video__comments-box.comments-submit
-      .video__coments-avatar
+      .video__comments-avatar
         if loggedUser
-          img.u-avatar(src=loggedUser.avatarUrl)
+          //- 댓글 작성시 야매로 유저 이름과 id값을 받을 수 있음
+          img.u-avatar#jsUserAvatar(src=loggedUser.avatarUrl name=`${loggedUser.id}/${loggedUser.name}`)
+          .info
+            span
         else
           img.u-avatar(src="/uploads/avatars/defaultimg.png")
       .video__comments-enter
@@ -40,17 +40,23 @@ block content
             .video__comments-submit
               input(type="reset" value="취소")
               input(type="submit" value="전송")
+            .video__comments-submit
           else
             a(href=routes.join)
               input(type="textarea" placeholder="댓글 추가...").video__comments-input
-
     .video__comments-box
-      ul.video__comments-list
-        each comment in video.comments
-          .video__comments-main
-            .video__comments-img
-              img.u-avatar(src=comment.avatarUrl)
-            .video__comments-content
-              span
-                a(href=routes.userDetail(comment.creator._id))=comment.name
-              span=comment.text
+      ul.video__comments-list#jsCommentList
+        each comment in video.comments.reverse()
+          li
+            .video__comments-main
+              .video__comments-img
+                img.u-avatar(src=comment.avatarUrl)
+              .video__comments-content
+                span
+                  a(href=routes.userDetail(comment.creator._id))=comment.name
+                span=comment.text
+              .video__comments-menu
+                i.fas.fa-ellipsis-v
+              ul.video__comments-menu-list
+                li 수정
+                li 삭제
