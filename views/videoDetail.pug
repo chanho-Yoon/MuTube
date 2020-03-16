@@ -47,16 +47,21 @@ block content
     .video__comments-box
       ul.video__comments-list#jsCommentList
         each comment in video.comments.reverse()
-          li
-            .video__comments-main
-              .video__comments-img
-                img.u-avatar(src=comment.avatarUrl)
-              .video__comments-content
-                span
-                  a(href=routes.userDetail(comment.creator._id))=comment.name
-                span=comment.text
-              .video__comments-menu
-                i.fas.fa-ellipsis-v
-              ul.video__comments-menu-list
-                li 수정
-                li 삭제
+          li.video__comments-main
+            .video__comments-img
+              img.u-avatar(src=comment.avatarUrl)
+            .video__comments-content
+              span
+                a(href=routes.userDetail(comment.creator._id))=comment.name
+              span=comment.text
+            //- button.video__comments-menu
+            //-   i.fas.fa-ellipsis-v
+            ul.video__comments-menu-list
+              if loggedUser
+                form
+                    li
+                      button(type="submit") 삭제
+                      //- a(href=routes.delComment(comment.id)) 삭제
+                  else
+                    li
+                      button(href="#") 신고하기
