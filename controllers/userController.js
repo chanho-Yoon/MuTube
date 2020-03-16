@@ -40,8 +40,9 @@ export const postLogin = passport.authenticate('local', {
   successRedirect: routes.home
 })
 //github로 로그인
+// 깃 허브 인증 페이지 이동
 export const githubLogin = passport.authenticate('github')
-
+// 깃허브 정보 콜백
 export const githubLoginCallback = async (accessToken, refreshToken, profile, cb) => {
   const {
     _json: { id, avatar_url, login: name, email }
