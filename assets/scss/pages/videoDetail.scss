@@ -140,7 +140,6 @@
           border-radius: 5px;
           top: 27px;
           right: 10px;
-          width: 70px;
           display: none;
           flex-direction: column;
           justify-content: center;
@@ -150,6 +149,7 @@
             line-height: 26px;
             display: flex;
             justify-content: center;
+            width: 100%;
             &:hover {
               background-color: lightgray;
             }
