@@ -47,7 +47,7 @@ block content
     .video__comments-box
       ul.video__comments-list#jsCommentList
         each comment in video.comments.reverse()
-          li.video__comments-main
+          li.video__comments-main(data-index=index)
             .video__comments-img
               img.u-avatar(src=comment.avatarUrl)
             .video__comments-content
@@ -58,10 +58,13 @@ block content
             //-   i.fas.fa-ellipsis-v
             ul.video__comments-menu-list
               if loggedUser
-                form
-                    li
-                      button(type="submit") 삭제
-                      //- a(href=routes.delComment(comment.id)) 삭제
-                  else
-                    li
-                      button(href="#") 신고하기
+                if String(comment.creator._id) === String(loggedUser.id)
+                  li
+                    button.comment-delete(name=`${comment.id}`) 삭제
+                    //- a(href=routes.delComment(comment.id)) 삭제
+                else
+                  li
+                    button(href="#") 신고하기
+              else
+                  li
+                    button(href="#") 신고하기
