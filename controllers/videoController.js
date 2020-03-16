@@ -153,7 +153,34 @@ export const postAddComment = async (req, res) => {
   } finally {
     setTimeout(function() {
       res.end()
-    }, 1000)
+    }, 100)
   }
-  // remove comment
+}
+// delete comment
+export const postDelComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { delCommentId }
+  } = req
+  try {
+    const commentUser = await Comment.findById(delCommentId)
+    console.log(commentUser.id + ' ' + delCommentId)
+
+    console.log(req.user.id + '  ' + commentUser.creator)
+
+    //해당 비디오에 댓글을 남긴 사용자가 댓글 삭제하기 위해 비디오 모델 가져옴
+    const video = await Video.findById(id)
+    console.log(video.comments)
+    if (commentUser.creator != req.user.id) {
+      throw Error()
+    } else {
+      await Comment.findByIdAndRemove({ _id: delCommentId })
+      video.save()
+    }
+  } catch (error) {
+    console.log('postDelComment 에러 ' + error)
+    res.status(400)
+  } finally {
+    res.end()
+  }
 }
