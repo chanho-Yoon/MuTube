@@ -17,7 +17,8 @@ main {
 }
 
 input:not([type='file']),
-button,
+button:not([class='video__comments-menu']),
+button:not([class='commentDelBtn']),
 textarea,
 .fileUpload {
   width: 100%;
