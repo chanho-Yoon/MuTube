@@ -31,11 +31,10 @@ export const getUpload = (req, res) => {
 export const postUpload = async (req, res) => {
   const {
     body: { title, description },
-    file: { path }
+    file: { location }
   } = req
-
   const newVideo = await Video.create({
-    fileUrl: path,
+    fileUrl: location,
     title,
     description,
     creator: req.user.id
@@ -99,9 +98,9 @@ export const deleteVideo = async (req, res) => {
     params: { id }
   } = req
   try {
-    const video = await Video.findById(id)
+    const video = await Video.findById(id).populate('creator')
     //로그인한 사용자가 다른 사용자의 비디오 삭제를 하지 못하도록
-    if (video.creator !== req.user.id) {
+    if (String(video.creator._id) !== String(req.user.id)) {
       throw Error()
     } else {
       await Video.findOneAndRemove({ _id: id })
@@ -151,9 +150,7 @@ export const postAddComment = async (req, res) => {
     console.log('postAddComment 에러')
     res.status(400)
   } finally {
-    setTimeout(function() {
-      res.end()
-    }, 100)
+    res.end()
   }
 }
 // delete comment
@@ -164,13 +161,8 @@ export const postDelComment = async (req, res) => {
   } = req
   try {
     const commentUser = await Comment.findById(delCommentId)
-    console.log(commentUser.id + ' ' + delCommentId)
-
-    console.log(req.user.id + '  ' + commentUser.creator)
-
     //해당 비디오에 댓글을 남긴 사용자가 댓글 삭제하기 위해 비디오 모델 가져옴
     const video = await Video.findById(id)
-    console.log(video.comments)
     if (commentUser.creator != req.user.id) {
       throw Error()
     } else {
