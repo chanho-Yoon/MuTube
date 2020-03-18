@@ -1,7 +1,7 @@
 import express from 'express'
 import routes from '../routes'
 import { videoDetail, getEditVideo, deleteVideo, getUpload, postUpload, postEditVideo } from '../controllers/videoController'
-import { uploadVideo, onlyPrivate } from '../js/middlewares'
+import { uploadVideo, onlyPrivate, awsDeleteVideo } from '../js/middlewares'
 
 const videoRouter = express.Router()
 
@@ -14,6 +14,6 @@ videoRouter.get(routes.videoDetail(), videoDetail)
 videoRouter.get(routes.editVideo(), onlyPrivate, getEditVideo)
 videoRouter.post(routes.editVideo(), onlyPrivate, postEditVideo)
 // 비디오 삭제
-videoRouter.get(routes.deleteVideo(), onlyPrivate, deleteVideo)
+videoRouter.get(routes.deleteVideo(), onlyPrivate, awsDeleteVideo, deleteVideo)
 
 export default videoRouter
