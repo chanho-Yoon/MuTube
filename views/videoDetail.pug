@@ -42,11 +42,11 @@ block content
               input(type="submit" value="전송")
             .video__comments-submit
           else
-            a(href=routes.join)
+            a(href=routes.join)#jsJoinAlter
               input(type="textarea" placeholder="댓글 추가...").video__comments-input
     .video__comments-box
       ul.video__comments-list#jsCommentList
-        each comment in video.comments.reverse()
+        each comment ,index in video.comments.reverse()
           li.video__comments-main(data-index=index)
             .video__comments-img
               img.u-avatar(src=comment.avatarUrl)
@@ -61,10 +61,9 @@ block content
                 if String(comment.creator._id) === String(loggedUser.id)
                   li
                     button.comment-delete(name=`${comment.id}`) 삭제
-                    //- a(href=routes.delComment(comment.id)) 삭제
                 else
                   li
-                    button(href="#") 신고하기
+                    button 신고하기
               else
                   li
-                    button(href="#") 신고하기
+                    button 신고하기
