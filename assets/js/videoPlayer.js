@@ -8,7 +8,7 @@ const totalTime = document.getElementById('totalTime')
 const videoId = document.getElementById('videoId')
 const volumeIcon = document.getElementById('jsVolume')
 
-// fetch를 사용하여 view URL 실행
+// fetch를 사용하여 ajax
 const registerView = () => {
   const id = window.location.href.split('/videos/')[1]
   fetch(`/api/${id}/view`, {
@@ -96,7 +96,7 @@ function formatDate(seconds) {
 
 //잘 작동할때가 있고 안될때가 있고 고민을 해봐야곘네,.,
 function setTotalTime() {
-  console.log('실행됨')
+  console.log('setTotalTime실행됨')
   setInterval(getCurrentTime, 1000)
   totalTime.innerHTML = formatDate(videoPlayer.duration)
 }
