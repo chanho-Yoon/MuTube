@@ -7,6 +7,7 @@ import helmet from 'helmet'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import passport from 'passport'
+import path from 'path'
 import mongoStore from 'connect-mongo'
 import mongoose from 'mongoose'
 import session from 'express-session'
@@ -28,9 +29,8 @@ app.use(helmet())
 //Pug view engine
 app.set('view engine', 'pug')
 //미들웨어
-app.use('/uploads', express.static('uploads'))
-app.use('/static', express.static('static'))
-
+app.set('views', path.join(__dirname, 'views'))
+app.use('/static', express.static(path.join(__dirname, 'static')))
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
