@@ -79,6 +79,7 @@ function fullScreenClick() {
 }
 
 function formatDate(seconds) {
+  console.log('formatDate 도착한 duration : ' + seconds)
   const secondsNumber = parseInt(seconds, 10)
   let hours = Math.floor(secondsNumber / 3600)
   let minutes = Math.floor((secondsNumber - hours * 3600) / 60)
@@ -101,8 +102,15 @@ function formatDate(seconds) {
 //아마 비동기식이 문제로 duration을 빨리 받아올 경우에만 시간표시
 //해결! 비디오 플레이어 init실행시 바로 setTotalTime함수를 실행하여 받아옴
 async function setTotalTime() {
+  // // videoPlayer.src를 받아 그걸 서버에 요청해서 응답 받으면 response의 blob(파일) 반환
+  // const blob = await fetch(videoPlayer.src).then(response => response.blob())
+  // console.log('blob : ' + blob)
+  // // 파일의 길이를 getBlobDuration에 받아서 저장
+  // const duration = await getBlobDuration(blob)
+  // console.log('blob : ' + duration)
   const duration = await getBlobDuration(videoPlayer.src)
   setInterval(getCurrentTime, 1000)
+  console.log('await duration : ' + duration)
   totalTime.innerHTML = formatDate(duration)
 }
 
@@ -144,7 +152,7 @@ function init() {
 
 if (videoContainer) {
   init()
-  setTotalTime() //비디오가 로드 되기 전에 시간을 호출하면 Nan 호출되는걸 방지
+  setTotalTime()
 }
 
 // function key 는 받는게 없는데 어떻게 키보드에서 펑션키로 재생 눌렀을때의 값을 받지..
