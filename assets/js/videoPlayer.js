@@ -1,3 +1,5 @@
+import getBlobDuration from 'get-blob-duration'
+
 const videoContainer = document.getElementById('jsVideoPlayer')
 const videoPlayer = document.querySelector('#jsVideoPlayer video')
 const playBtn = document.getElementById('jsPlayButton')
@@ -95,10 +97,13 @@ function formatDate(seconds) {
 }
 
 //잘 작동할때가 있고 안될때가 있고 고민을 해봐야곘네,.,
-function setTotalTime() {
-  console.log('setTotalTime실행됨')
+//위의 문제는 npm package인 "get-blob-duration" 로 해결 / 안됨.. 흠
+//아마 비동기식이 문제로 duration을 빨리 받아올 경우에만 시간표시
+//해결! 비디오 플레이어 init실행시 바로 setTotalTime함수를 실행하여 받아옴
+async function setTotalTime() {
+  const duration = await getBlobDuration(videoPlayer.src)
   setInterval(getCurrentTime, 1000)
-  totalTime.innerHTML = formatDate(videoPlayer.duration)
+  totalTime.innerHTML = formatDate(duration)
 }
 
 //비디오 플레이 중 시간
@@ -133,14 +138,13 @@ function init() {
   playBtn.addEventListener('click', handlePlayClick)
   volumeIcon.addEventListener('click', handleVolumeClick)
   screenBtn.addEventListener('click', fullScreenClick)
-  //비디오가 로드 되기 전에 시간을 호출하면 Nan 호출되는걸 방지
-  videoId.addEventListener('loadedmetadata', setTotalTime)
   videoId.addEventListener('ended', handleEnded)
   volumeRange.addEventListener('input', handleDrag)
 }
 
 if (videoContainer) {
   init()
+  setTotalTime() //비디오가 로드 되기 전에 시간을 호출하면 Nan 호출되는걸 방지
 }
 
 // function key 는 받는게 없는데 어떻게 키보드에서 펑션키로 재생 눌렀을때의 값을 받지..
