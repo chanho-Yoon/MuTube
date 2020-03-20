@@ -1,9 +1,14 @@
+/* eslint-disable no-undef */
+
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
 
-// eslint-disable-next-line no-undef
-mongoose.connect(process.env.MONGO_URL_PROD, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
+//배포일 경우 MONGO 클라우드에 접속 아닐시에는 로컬 MONGO에 접속
+mongoose.connect(process.env.PRODUCTION ? process.env.MONGO_URL_PROD : process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  userFindAndModify: false
+})
 
 const db = mongoose.connection
 

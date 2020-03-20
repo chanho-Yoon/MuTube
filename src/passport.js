@@ -14,7 +14,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-      callbackURL: `http://localhost:4000${routes.githubCallback}`
+      callbackURL: process.env.PRODUCTION ? 'https://powerful-fortress-80578.herokuapp.com/' : `http://localhost:4000${routes.githubCallback}`
     },
     githubLoginCallback
   )
@@ -37,7 +37,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: `http://localhost:4000${routes.googleCallback}`
+      callbackURL: process.env.PRODUCTION ? 'https://powerful-fortress-80578.herokuapp.com/' : `http://localhost:4000${routes.googleCallback}`
     },
     googleLoginCallback
   )
