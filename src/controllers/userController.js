@@ -12,6 +12,7 @@ export const postJoin = async (req, res, next) => {
     body: { name, email, password, password2 }
   } = req
   if (password !== password2) {
+    req.flash('joinPwError', '패스워드가 일치하지 않습니다')
     //패스워드가 일치하지 않다는 상태 코드(status code) 전달
     res.status(400)
     res.render('join', { pageTitle: 'Join' })
@@ -23,10 +24,12 @@ export const postJoin = async (req, res, next) => {
         email
       })
       await User.register(user, password)
+      req.flash('joinsuccess', '회원가입 성공')
       next()
     } catch (error) {
+      req.flash('joinIdError', '이미 존재하는 ID 입니다')
       console.log(error)
-      res.redirect(routes.home)
+      res.render('join', { pageTitle: 'Join' })
     }
   }
 }
@@ -37,11 +40,16 @@ export const getLogin = (req, res) => {
 export const postLogin = passport.authenticate('local', {
   //로그인 실패시 failure, 성공시 success
   failureRedirect: routes.login,
-  successRedirect: routes.home
+  successRedirect: routes.home,
+  successFlash: '로그인 성공',
+  failureFlash: '로그인 실패, 아이디 또는 비밀번호를 확인해주세요'
 })
 //github로 로그인
 // 깃 허브 인증 페이지 이동
-export const githubLogin = passport.authenticate('github')
+export const githubLogin = passport.authenticate('github', {
+  successFlash: '로그인 성공',
+  failureFlash: '로그인 실패, 아이디 또는 비밀번호를 확인해주세요'
+})
 // 깃허브 정보 콜백
 export const githubLoginCallback = async (accessToken, refreshToken, profile, cb) => {
   const {
@@ -82,8 +90,11 @@ export const postFacebookLogIn = (req, res) => {
 }
 //-----------------------------------------------------------------------------------
 // google로 로그인
-export const googleLogin = passport.authenticate('google', { scope: ['profile', 'email'] })
-
+export const googleLogin = passport.authenticate('google', {
+  scope: ['profile', 'email'],
+  successFlash: '로그인 성공',
+  failureFlash: '로그인 실패, 아이디 또는 비밀번호를 확인해주세요'
+})
 export const googleLoginCallback = async (accessToken, refreshToken, profile, cb) => {
   const {
     _json: { sub: id, picture: avatar_url, name, email }
@@ -115,6 +126,7 @@ export const postGoogleLogin = (req, res) => {
 
 export const logout = (req, res) => {
   // 로그아웃
+  req.flash('info', '로그아웃 성공')
   req.logout()
   res.redirect(routes.home)
 }
@@ -156,8 +168,10 @@ export const postEditProfile = async (req, res) => {
       // 새로운 file을 받지 못했다면 기존의 avatarUrl을 그대로 사 용 || /해준 이유는 이미지 경로문제 해결
       avatarUrl: file ? file.location : req.user.avatarUrl
     })
+    req.flash('success', '프로필 업데이트 성공')
     res.redirect(routes.me)
   } catch (error) {
+    req.flash('error', '프로필 업데이트 실패')
     res.redircet(routes.editProfile)
   }
 }
@@ -172,6 +186,7 @@ export const postChangePassword = async (req, res) => {
   } = req
   try {
     if (newPassword !== checkPassword) {
+      req.flash('error', '비밀번호가 일치하지 않습니다')
       res.status(400)
       res.redirect(`/users${routes.changePassword}`)
       return
