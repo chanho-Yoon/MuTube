@@ -1,3 +1,5 @@
+include ../mixins/messageFlash
+
 doctype html
 html(lang="ko")
   head
@@ -9,6 +11,33 @@ html(lang="ko")
     link(rel="stylesheet", href="/static/styles.css")
     title #{siteName} | #{pageTitle}
   body
+    if messages.info
+      +message({
+        type:'info',
+        text:messages.info
+      })
+    
+    else if messages.error
+      +message({
+        type:'error',
+        text:messages.error
+      })
+    else if messages.joinsuccess
+      +message({
+        type:'joinsuccess',
+        text:messages.joinsuccess
+      })
+    else if messages.success
+      +message({
+        type:'success',
+        text:messages.success
+      })
+    else if messages.joinIdError
+      +message({
+        type:'success',
+        text:messages.joinIdError
+      })
+    
     //- header
     include ../partials/header.pug
     //- main
