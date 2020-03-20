@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import passport from 'passport'
 import path from 'path'
+import flash from 'express-flash'
 import mongoStore from 'connect-mongo'
 import mongoose from 'mongoose'
 import session from 'express-session'
@@ -43,6 +44,8 @@ app.use(
     store: new CookieStore({ mongooseConnection: mongoose.connection })
   })
 )
+app.use(flash())
+
 app.use(passport.initialize())
 app.use(passport.session())
 
