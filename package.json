@@ -5,12 +5,12 @@
   "author": "chanho Yoon",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.7",
     "@babel/polyfill": "^7.8.3",
     "@babel/preset-env": "^7.7.7",
     "@babel/runtime": "^7.8.7",
-    "@babel/cli": "^7.8.4",
     "autoprefixer": "^9.7.4",
     "aws-sdk": "^2.641.0",
     "axios": "^0.19.2",
@@ -52,7 +52,7 @@
     "prebuild": "rm -rf build",
     "copyAll": "cp -R src/static build && cp -R src/views build",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
-    "start": "node build/init.js",
+    "start": "PRODUCTION=true node build/init.js",
     "prestart": "npm run build"
   },
   "devDependencies": {
