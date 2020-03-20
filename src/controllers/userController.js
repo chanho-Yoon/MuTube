@@ -3,7 +3,7 @@ import User from '../models/User'
 import passport from 'passport'
 //GET 방식
 export const getJoin = (req, res) => {
-  res.render('Join', { pageTitle: 'Join' })
+  res.render('join', { pageTitle: 'Join' })
 }
 
 //POST 방식
@@ -14,7 +14,7 @@ export const postJoin = async (req, res, next) => {
   if (password !== password2) {
     //패스워드가 일치하지 않다는 상태 코드(status code) 전달
     res.status(400)
-    res.render('Join', { pageTitle: 'Join' })
+    res.render('join', { pageTitle: 'Join' })
   } else {
     // 사용자 등록
     try {
@@ -32,7 +32,7 @@ export const postJoin = async (req, res, next) => {
 }
 
 export const getLogin = (req, res) => {
-  res.render('Login', { pageTitle: 'Login' })
+  res.render('login', { pageTitle: 'Login' })
 }
 export const postLogin = passport.authenticate('local', {
   //로그인 실패시 failure, 성공시 success
@@ -122,7 +122,7 @@ export const logout = (req, res) => {
 export const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).populate('videos')
-    res.render('UserDetail', { pageTitle: 'User Detail', user })
+    res.render('userdetail', { pageTitle: 'User Detail', user })
   } catch (error) {
     res.redircet(routes.home)
   }
@@ -135,14 +135,14 @@ export const userDetail = async (req, res) => {
   } = req
   try {
     const user = await User.findById(id).populate('videos')
-    res.render('UserDetail', { pageTitle: 'User Detail', user })
+    res.render('userdetail', { pageTitle: 'User Detail', user })
   } catch (error) {
     res.redirect(routes.home)
   }
 }
 // 유저 정보 변경
 export const getEditProfile = (req, res) => {
-  res.render('EditProfile', { pageTitle: 'Edit Profile' })
+  res.render('editprofile', { pageTitle: 'Edit Profile' })
 }
 export const postEditProfile = async (req, res) => {
   const {
@@ -164,7 +164,7 @@ export const postEditProfile = async (req, res) => {
 
 //비밀번호 변경
 export const getChangePassword = (req, res) => {
-  res.render('ChangePassword', { pageTitle: 'ChangePassword' })
+  res.render('changepassword', { pageTitle: 'ChangePassword' })
 }
 export const postChangePassword = async (req, res) => {
   const {
