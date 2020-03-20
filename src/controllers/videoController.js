@@ -56,7 +56,7 @@ export const videoDetail = async (req, res) => {
     const video = await Video.findById(id)
       .populate('creator')
       .populate('comments')
-    res.render('videodetail', { pageTitle: video.title, video })
+    res.render('videoDetail', { pageTitle: video.title, video })
   } catch (error) {
     //에러 발생시 홈으로 강제이동
     res.redirect(routes.home)
@@ -74,7 +74,7 @@ export const getEditVideo = async (req, res) => {
     if (String(video.creator) !== req.user.id) {
       throw Error()
     } else {
-      res.render('editvideo', { pageTitle: `Edit ${video.title}`, video })
+      res.render('editVideo', { pageTitle: `Edit ${video.title}`, video })
     }
   } catch (error) {
     res.redirect(routes.home)

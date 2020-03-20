@@ -122,7 +122,7 @@ export const logout = (req, res) => {
 export const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).populate('videos')
-    res.render('userdetail', { pageTitle: 'User Detail', user })
+    res.render('userDetail', { pageTitle: 'User Detail', user })
   } catch (error) {
     res.redircet(routes.home)
   }
@@ -135,14 +135,14 @@ export const userDetail = async (req, res) => {
   } = req
   try {
     const user = await User.findById(id).populate('videos')
-    res.render('userdetail', { pageTitle: 'User Detail', user })
+    res.render('userDetail', { pageTitle: 'User Detail', user })
   } catch (error) {
     res.redirect(routes.home)
   }
 }
 // 유저 정보 변경
 export const getEditProfile = (req, res) => {
-  res.render('editprofile', { pageTitle: 'Edit Profile' })
+  res.render('editProfile', { pageTitle: 'Edit Profile' })
 }
 export const postEditProfile = async (req, res) => {
   const {
@@ -164,7 +164,7 @@ export const postEditProfile = async (req, res) => {
 
 //비밀번호 변경
 export const getChangePassword = (req, res) => {
-  res.render('changepassword', { pageTitle: 'ChangePassword' })
+  res.render('changePassword', { pageTitle: 'ChangePassword' })
 }
 export const postChangePassword = async (req, res) => {
   const {
