@@ -40,7 +40,7 @@ passport.use(
       clientID: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: process.env.PRODUCTION
-        ? `https://powerful-fortress-80578.herokuapp.com${routes.githubCallback}`
+        ? `https://powerful-fortress-80578.herokuapp.com${routes.googleCallback}`
         : `http://localhost:4000${routes.googleCallback}`
     },
     googleLoginCallback
