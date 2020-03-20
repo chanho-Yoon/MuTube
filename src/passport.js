@@ -8,7 +8,7 @@ import { githubLoginCallback, facebookLoginCallback, googleLoginCallback } from 
 import routes from './routes'
 passport.use(User.createStrategy())
 
-//github Authenticate
+// github Authenticate
 passport.use(
   new GithubStrategy(
     {
@@ -21,7 +21,7 @@ passport.use(
     githubLoginCallback
   )
 )
-//facebook Authenticate
+// facebook Authenticate
 passport.use(
   new FacebookStrategy(
     {
@@ -33,7 +33,7 @@ passport.use(
   )
 )
 
-//google Authenticate
+// google Authenticate
 passport.use(
   new GoogleStrategy(
     {
