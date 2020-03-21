@@ -39,7 +39,7 @@ export const postUpload = async (req, res) => {
     description,
     creator: req.user.id
   })
-
+  req.flash('success', '업로드 성공')
   //새로운 비디오 생성 후 로그인된 유저스키마 videos에 새롭게 등록되는 비디오의 id를 저장
   req.user.videos.push(newVideo.id)
   req.user.save()
@@ -87,8 +87,10 @@ export const postEditVideo = async (req, res) => {
   } = req
   try {
     await Video.findOneAndUpdate({ _id: id }, { title, description })
+    req.flash('success', '비디오 업데이트 성공')
     res.redirect(routes.videoDetail(id))
   } catch (error) {
+    req.flash('error', '비디오 업데이트 실패')
     res.redirect(routes.home)
   }
 }
@@ -104,6 +106,7 @@ export const deleteVideo = async (req, res) => {
       throw Error()
     } else {
       await Video.findOneAndRemove({ _id: id })
+      req.flash('success', '비디오 삭제 성공')
     }
   } catch (error) {
     console.log(`Controller deleteVideo error : ${error}`)
