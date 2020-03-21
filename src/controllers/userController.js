@@ -12,7 +12,7 @@ export const postJoin = async (req, res, next) => {
     body: { name, email, password, password2 }
   } = req
   if (password !== password2) {
-    req.flash('joinPwError', '패스워드가 일치하지 않습니다')
+    req.flash('error', '패스워드가 일치하지 않습니다')
     //패스워드가 일치하지 않다는 상태 코드(status code) 전달
     res.status(400)
     res.render('join', { pageTitle: 'Join' })
@@ -21,13 +21,14 @@ export const postJoin = async (req, res, next) => {
     try {
       const user = await User({
         name,
-        email
+        email,
+        avatarUrl: 'https://mutube.s3.ap-northeast-2.amazonaws.com/avatar/default.png'
       })
       await User.register(user, password)
-      req.flash('joinsuccess', '회원가입 성공')
+      req.flash('successJoinId', '회원가입 성공')
       next()
     } catch (error) {
-      req.flash('joinIdError', '이미 존재하는 ID 입니다')
+      req.flash('error', '이미 존재하는 ID 입니다')
       console.log(error)
       res.render('join', { pageTitle: 'Join' })
     }
@@ -57,7 +58,7 @@ export const githubLoginCallback = async (accessToken, refreshToken, profile, cb
   } = profile
   try {
     const user = await User.findOne({ email: email })
-    //동일한 이메을 가졌을 때는 이미 가입중인 사용자라 바로 로그인하도록 아니라면 신규 사용자 생성
+    //동일한 이메일을 가졌을 때는 이미 가입중인 사용자라 바로 로그인하도록 아니라면 신규 사용자 생성
     if (user) {
       user.githubId = id
       user.save()
@@ -193,9 +194,10 @@ export const postChangePassword = async (req, res) => {
     }
     //passport-local-mongoose 함수 changePassword
     await req.user.changePassword(oldPassword, newPassword)
-
+    req.flash('success', '비밀번호 변경 성공')
     res.redirect(routes.me)
   } catch (error) {
+    req.flash('error', '기존 비밀번호가 일치하지 않습니다.')
     res.status(400)
     res.redirect(`/users${routes.changePassword}`)
   }
