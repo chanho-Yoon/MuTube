@@ -27,6 +27,7 @@ function addComment(comment, avatarUrl, userUrl, userName, commentId) {
   spanComment.innerHTML = comment
   i.setAttribute('class', 'fas fa-ellipsis-v')
   button.setAttribute('name', commentId)
+  button.setAttribute('class', 'comment-delete')
   button.innerHTML = '삭제'
 
   const videoCommentsMain = document.createElement('li')
@@ -52,8 +53,6 @@ function addComment(comment, avatarUrl, userUrl, userName, commentId) {
   // 메뉴 리스트 추가
   videoCommentsMenuList.appendChild(commentDeleteLi)
   commentDeleteLi.appendChild(button)
-
-  // li태그에 전체 추가
 
   // ul의 맨 위에 li 추가
   commentList.prepend(videoCommentsMain)
@@ -82,6 +81,7 @@ const sendComment = async (comment, avatarUrl, userUrl, userName) => {
   const response = await axios({
     url: `/api/${id}/addComment`,
     method: 'POST',
+    async: false,
     data: {
       comment
     }
