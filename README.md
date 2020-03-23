@@ -2,31 +2,13 @@
 
 MuTube (Music Tube)
 
-## 간단한 설명
+## 목적
+    기술스택 향상을 위해 Youtube 클론코딩으로 Front-end 와 Back-end를 다루고 heroku 서버에 배포 하기
 
-    음악 영상만 전문적으로 공유하는 웹
-    알려지지 않은 비유명인들을 대상으로 하는 음악 공유 웹만들기 프로젝트
+## 공부한 기술 및 구현한 기능
+    바닐라 자바스크립트로 개발을 하면서 node.js, webpack ,sass ,express, babel, 템플릿 엔진 pug ,express-mongoose 
+    heroku(서버) , mongoDB Atlas, AWS S3(비디오, 이미지파일) - multer s3, passport(local, github,google Login 기능 구현)
+    axios 를 사용한 실시간 댓글 추가 및 삭제, 비디오 커스텀 플레이어 구현 등을 공부함
 
-## 사용한 기술
-
-    VanillaJS , nodeJS express
-    MVC design pattern( model, view, controller )
-    Express template PUG
-    MongoDB - Mongoose
-    dotenv( 환경변수 )
-    Multer ( nodeJS 미들웨어 , 업로드한 파일 받아 처리 )
-
-## 기능
-
-    - [x] 회원가입
-    - [x] 로그인
-    - [o] 비디오 업로드
-    - [o] 비디오 상세보기
-    - [o] 비디오 수정
-    - [o] 비디오 삭제
-    - [x] 회원정보 수정
-    - [x] 깃허브, 지메일로 가입 및 로그인 기능
-    - [x]
-    - [x]
-
-## 참고
+## 배포 
+    link : [project](https://powerful-fortress-80578.herokuapp.com)
