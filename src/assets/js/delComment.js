@@ -12,6 +12,7 @@ function decrease() {
 function removeCommentLi(li) {
   commentList.removeChild(li)
   decrease()
+  alert('댓글 삭제 완료')
 }
 
 const deleteComment = async (li, delCommentId) => {
