@@ -11,4 +11,4 @@ MuTube (Music Tube)
     axios 를 사용한 실시간 댓글 추가 및 삭제, 비디오 커스텀 플레이어 구현 등을 공부함
 
 ## 배포 
-    link : [project](https://powerful-fortress-80578.herokuapp.com)
+  [project link](https://powerful-fortress-80578.herokuapp.com)
